@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/style/globals.css";
+import { Toaster } from "react-hot-toast";
+import TranstackQueryProvider from "@/providers/tanstack-query-provider";
+import ReduxProvider from "@/lib/ReduxProvider";
+import StoreUser from '@/components/StoreUser'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <TranstackQueryProvider>
+          <ReduxProvider>
+            <Toaster />
+            <StoreUser />
+            {children}
+          </ReduxProvider>
+        </TranstackQueryProvider>
       </body>
     </html>
   );
