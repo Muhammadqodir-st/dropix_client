@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import TranstackQueryProvider from "@/providers/tanstack-query-provider";
 import ReduxProvider from "@/lib/ReduxProvider";
 import StoreUser from '@/components/StoreUser'
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,9 @@ export default function RootLayout({
       >
         <TranstackQueryProvider>
           <ReduxProvider>
-            <Toaster />
             <StoreUser />
+            <NextTopLoader color="#1D4ED8" />
+            <Toaster />
             {children}
           </ReduxProvider>
         </TranstackQueryProvider>
