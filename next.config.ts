@@ -5,9 +5,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   images:{
     remotePatterns:[
-      new URL("https://i.pinimg.com/1200x/db/c1/0a/dbc10a88b920f2bec343812331bc2cd2.jpg"),
-      new URL("https://i.pinimg.com/736x/da/b7/a1/dab7a173873c6a1321cc220ebd1cf1f0.jpg"),
-      new URL("https://i.pinimg.com/736x/74/2a/d2/742ad25da6715075083f8efdec4008b5.jpg")
+      new URL("https://i.pinimg.com/1200x/a9/4c/a1/a94ca116ae70171d6bfa66f8e79fd3ad.jpg"),
     ]
   }
 };
