@@ -6,5 +6,17 @@ export async function fetcher(url: string, options: RequestInit = {}) {
         }
     });
 
+    if (!res.ok) {
+        throw new Error("Failed to fetch")
+    }
+
     return res.json()
 };
+
+export function getToken() {
+    if (typeof window !== "undefined") {
+        return localStorage.getItem("token")
+    };
+
+    return null
+}

@@ -1,6 +1,4 @@
-import Image from "next/image";
 import { posts } from '@/data/data'
-import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
 import Post from "@/components/Post";
 
 export default function Home() {
