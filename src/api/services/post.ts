@@ -8,7 +8,7 @@ export function getAll() {
         alert("Token not found")
     }
 
-    fetcher("/post", {
+    return fetcher("/post", {
         method: "GET",
         headers: {
             'Authorization': `Bearer ${token}`
@@ -23,7 +23,7 @@ export function getId(id: string) {
         alert("Token not found")
     };
 
-    fetcher(`post/${id}`, {
+    return fetcher(`post/${id}`, {
         method: "GET",
         headers: {
             'Authorization': `Bearer ${token}`
