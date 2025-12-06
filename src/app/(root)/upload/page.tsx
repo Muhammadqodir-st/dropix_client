@@ -5,6 +5,7 @@ import { useForm } from "@tanstack/react-form"
 
 // next
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 // Iform
 interface IForm {
@@ -17,10 +18,13 @@ import { useSelector } from "react-redux"
 import { RootState } from "@/lib/store"
 
 // lucide
-import { SmilePlus } from "lucide-react"
+import { SmilePlus, X } from "lucide-react"
 
 
 export default function Upload() {
+
+    // router
+    const router = useRouter()
 
     // redux
     const user = useSelector((state: RootState) => state.user.data);
@@ -33,8 +37,15 @@ export default function Upload() {
         } as IForm
     });
 
+
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+
+            {/* router back */}
+            <button onClick={() => router.back()} className="absolute top-4 right-4 cursor-pointer">
+                <X size={28} />
+            </button>
+
             <div className="w-250 h-180 bg-zinc-900 rounded-xl overflow-hidden">
                 <div className="w-full py-2 bg-black">
                     <p className="text-center font-semibold">Create new post</p>
