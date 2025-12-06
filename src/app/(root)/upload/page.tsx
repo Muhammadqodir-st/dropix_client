@@ -1,17 +1,11 @@
 "use client"
 
-// tanstack
-import { useForm } from "@tanstack/react-form"
-
 // next
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
-// Iform
-interface IForm {
-    file: null | File,
-    title: string
-}
+// tanstack
+import { useForm } from "@tanstack/react-form"
 
 // redux
 import { useSelector } from "react-redux"
@@ -20,11 +14,25 @@ import { RootState } from "@/lib/store"
 // lucide
 import { SmilePlus, X } from "lucide-react"
 
+// emoji mart
+import EmojiPicker from "@/components/EmojiPicker"
+
+// react
+import { useState } from "react"
+
+// Iform
+interface IForm {
+    file: null | File,
+    title: string
+}
 
 export default function Upload() {
 
     // router
     const router = useRouter()
+
+    // state
+    const [openEmoji, setOpenEmoji] = useState<boolean>(false);
 
     // redux
     const user = useSelector((state: RootState) => state.user.data);
@@ -46,12 +54,12 @@ export default function Upload() {
                 <X size={28} />
             </button>
 
-            <div className="w-250 h-180 bg-zinc-900 rounded-xl overflow-hidden">
+            <form className="w-250 h-180 bg-zinc-900 rounded-xl overflow-hidden">
                 <div className="w-full py-2 bg-black">
                     <p className="text-center font-semibold">Create new post</p>
                 </div>
 
-                <form className="w-full h-full">
+                <div className="w-full h-full">
                     <form.Field name="file">
                         {(field) => {
                             const value = field.state.value as File || null
@@ -88,27 +96,36 @@ export default function Upload() {
                                             </div>
                                             <form.Field name="title">
                                                 {(field) => {
-                                                    const length = field.state.value?.length
+                                                    const length = field.state.value?.length || 0
 
                                                     return (
                                                         <div>
-                                                            <textarea className="w-full h-50 p-2 outline-0" onChange={(e) => { field.handleChange(e.target.value) }} maxLength={200} autoFocus></textarea>
+                                                            <textarea className="w-full h-50 p-2 outline-0" value={field.state.value} onChange={(e) => { field.handleChange(e.target.value) }} maxLength={200} autoFocus></textarea>
                                                             <div className="w-full flex items-center justify-between text-zinc-500">
-                                                                <SmilePlus size={20} />
+                                                                <SmilePlus className="cursor-pointer" onClick={() => setOpenEmoji(!openEmoji)} size={20} />
                                                                 <p className="text-sm">{`${length}/200`}</p>
                                                             </div>
+
+                                                            {/* emoji modal */}
+                                                            {openEmoji && (
+                                                                <EmojiPicker onSelect={(e: { native: string }) => {
+                                                                    field.handleChange(field.state.value + e.native);
+                                                                    setOpenEmoji(false)
+                                                                }} />
+                                                            )}
                                                         </div>
                                                     )
                                                 }}
                                             </form.Field>
                                         </div>
                                     )}
+
                                 </div>
                             )
                         }}
                     </form.Field>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     )
 }
