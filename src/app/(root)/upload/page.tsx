@@ -12,7 +12,7 @@ import { useSelector } from "react-redux"
 import { RootState } from "@/lib/store"
 
 // lucide
-import { SmilePlus, X } from "lucide-react"
+import { MoveLeft, SmilePlus, X } from "lucide-react"
 
 // emoji mart
 import EmojiPicker from "@/components/EmojiPicker"
@@ -40,6 +40,7 @@ export default function Upload() {
 
     // state
     const [openEmoji, setOpenEmoji] = useState<boolean>(false);
+    const [uploadBtn, setUploadBtn] = useState<boolean>(false)
 
     // redux
     const user = useSelector((state: RootState) => state.user.data);
@@ -50,6 +51,7 @@ export default function Upload() {
             return await createPost({ file, title })
         },
         onSuccess: (res: { message: string }) => {
+            setUploadBtn(false)
             toast.success(res.message)
         },
         onError: (err: { message: string }) => {
@@ -75,13 +77,21 @@ export default function Upload() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
 
             {/* router back */}
-            <button onClick={() => router.back()} className="absolute top-4 right-4 cursor-pointer">
+            <button disabled={uploadMutation.isPending} onClick={() => router.back()} className="absolute top-4 right-4 cursor-pointer">
                 <X size={28} />
             </button>
 
             <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit() }} className="w-250 h-180 bg-zinc-900 rounded-xl overflow-hidden">
-                <div className="w-full py-2 bg-black">
+                <div className={`w-full p-2.5 bg-black ${uploadBtn && 'flex items-center justify-between'}`}>
+                    {uploadBtn && (
+                        <button disabled={uploadMutation.isPending} className="cursor-pointer" type="button" onClick={() => { form.setFieldValue("file", null); setUploadBtn(false) }}>
+                            <MoveLeft size={25} />
+                        </button>
+                    )}
                     <p className="text-center font-semibold">Create new post</p>
+                    {uploadBtn && (
+                        <button disabled={uploadMutation.isPending} type="submit" className={`py-1 px-4 ${uploadMutation.isPending ? 'bg-blue-950' : 'bg-blue-700'} rounded-lg text-sm font-semibold cursor-pointer`}>create</button>
+                    )}
                 </div>
 
                 <div className="w-full h-full">
@@ -97,7 +107,8 @@ export default function Upload() {
                                         <input className="hidden" type="file" id="imageInput" onChange={(e) => {
                                             const file = e.target.files?.[0] || null
                                             field.handleChange(file)
-                                        }} />
+                                            setUploadBtn(true);
+                                        }} disabled={uploadMutation.isPending} />
                                         {image ? (
                                             <div className="w-full h-full flex items-center justify-center bg-zinc-00">
                                                 <Image className="w-full  object-center" src={image} width={800} height={800} alt="image" />
@@ -141,7 +152,7 @@ export default function Upload() {
 
                                                     return (
                                                         <div className="flex flex-col gap-3">
-                                                            <textarea className="w-full h-50 p-2 outline-0" value={field.state.value} onChange={(e) => { field.handleChange(e.target.value) }} maxLength={200} autoFocus></textarea>
+                                                            <textarea className="w-full h-50 p-2 outline-0" value={field.state.value} onChange={(e) => { field.handleChange(e.target.value) }} disabled={uploadMutation.isPending} maxLength={200} autoFocus></textarea>
                                                             <div className="w-full flex items-center justify-between text-zinc-500">
                                                                 <SmilePlus className="cursor-pointer" onClick={() => setOpenEmoji(!openEmoji)} size={20} />
                                                                 <p className="text-sm">{`${length}/200`}</p>
@@ -155,7 +166,6 @@ export default function Upload() {
                                                                 }} />
                                                             )}
 
-                                                            <button disabled={uploadMutation.isPending} type="submit" className={`w-full p-2 ${uploadMutation.isPending ? 'bg-blue-950' : 'bg-blue-700'} rounded-lg font-semibold cursor-pointer`}>create</button>
                                                         </div>
                                                     )
                                                 }}

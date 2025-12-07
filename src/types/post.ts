@@ -12,6 +12,7 @@ interface AutherProp {
     id: string,
     name: string,
     email: string
+    avatar: string,
     Post: [],
     createdAt: Date
     updateAt: Date
