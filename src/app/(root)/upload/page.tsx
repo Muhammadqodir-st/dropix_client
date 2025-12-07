@@ -19,6 +19,13 @@ import EmojiPicker from "@/components/EmojiPicker"
 
 // react
 import { useState } from "react"
+import { useMutation } from "@tanstack/react-query"
+
+// api service
+import { createPost } from "@/api/services/post"
+
+// loader or toast
+import toast from "react-hot-toast"
 
 // Iform
 interface IForm {
@@ -37,12 +44,30 @@ export default function Upload() {
     // redux
     const user = useSelector((state: RootState) => state.user.data);
 
+    // matation
+    const uploadMutation = useMutation({
+        mutationFn: async ({ file, title }: IForm) => {
+            return await createPost({ file, title })
+        },
+        onSuccess: (res: { message: string }) => {
+            toast.success(res.message)
+        },
+        onError: (err: { message: string }) => {
+            toast.error(err.message)
+            console.log(err);
+        }
+    })
+
     // form
     const form = useForm({
         defaultValues: {
             file: null,
             title: ''
-        } as IForm
+        } as IForm,
+        onSubmit: async ({ value }) => {
+            await uploadMutation.mutateAsync(value)
+            form.reset()
+        }
     });
 
 
@@ -54,7 +79,7 @@ export default function Upload() {
                 <X size={28} />
             </button>
 
-            <form className="w-250 h-180 bg-zinc-900 rounded-xl overflow-hidden">
+            <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit() }} className="w-250 h-180 bg-zinc-900 rounded-xl overflow-hidden">
                 <div className="w-full py-2 bg-black">
                     <p className="text-center font-semibold">Create new post</p>
                 </div>
@@ -94,12 +119,28 @@ export default function Upload() {
                                                 <Image className="w-8 h-8 rounded-full" src={user ? user.avatar : '/assets/defualt-user.jpg'} width={200} height={200} alt={`${user ? user.name : 'username'}`} />
                                                 <p className="text-sm font-semibold">{user ? user.name : 'username'}</p>
                                             </div>
-                                            <form.Field name="title">
+                                            <form.Field name="title" validators={{
+                                                onChange: ({ value }) => {
+                                                    if (typeof value !== "string") {
+                                                        return "Title must be a string";
+                                                    }
+
+                                                    if (!value.trim()) {
+                                                        return "Title should not be empty";
+                                                    }
+
+                                                    if (value.length > 200) {
+                                                        return "Title must not be greater than 200 characters";
+                                                    }
+
+                                                    return undefined;
+                                                }
+                                            }}>
                                                 {(field) => {
                                                     const length = field.state.value?.length || 0
 
                                                     return (
-                                                        <div>
+                                                        <div className="flex flex-col gap-3">
                                                             <textarea className="w-full h-50 p-2 outline-0" value={field.state.value} onChange={(e) => { field.handleChange(e.target.value) }} maxLength={200} autoFocus></textarea>
                                                             <div className="w-full flex items-center justify-between text-zinc-500">
                                                                 <SmilePlus className="cursor-pointer" onClick={() => setOpenEmoji(!openEmoji)} size={20} />
@@ -113,6 +154,8 @@ export default function Upload() {
                                                                     setOpenEmoji(false)
                                                                 }} />
                                                             )}
+
+                                                            <button disabled={uploadMutation.isPending} type="submit" className={`w-full p-2 ${uploadMutation.isPending ? 'bg-blue-950' : 'bg-blue-700'} rounded-lg font-semibold cursor-pointer`}>create</button>
                                                         </div>
                                                     )
                                                 }}

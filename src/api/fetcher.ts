@@ -7,7 +7,8 @@ export async function fetcher(url: string, options: RequestInit = {}) {
     });
 
     if (!res.ok) {
-        throw new Error("Failed to fetch")
+        const error = await res.json().catch(() => null)
+        throw new Error(error.message || `Https Error ${res.status}`)
     }
 
     return res.json()
