@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // tanstack 
-import { useForm } from '@tanstack/react-form';
+import { AnyFieldApi, useForm } from '@tanstack/react-form';
 import { useMutation } from "@tanstack/react-query";
 
 // toast 
@@ -24,6 +24,18 @@ import ButtonLoader from "@/components/loaders/ButtonLoader";
 interface IForm {
     name: string;
     email: string;
+}
+
+// form info
+function FieldInfo({ field }: { field: AnyFieldApi }) {
+    return (
+        <>
+            {field.state.meta.isTouched && !field.state.meta.isValid ? (
+                <em className="text-sm text-red-500">{field.state.meta.errors.join(',')}</em>
+            ) : null}
+            {field.state.meta.isValidating ? 'Validating...' : null}
+        </>
+    )
 }
 
 export default function Register() {
@@ -78,35 +90,61 @@ export default function Register() {
                 {/* name input */}
                 <form.Field name="name" validators={{
                     onChange: ({ value }) => {
-                        if (!value) {
-                            return toast.error('Please enter name')
+                        if (typeof value !== "string") {
+                            return "Invalid input";
                         }
+
+                        if (!value.trim()) {
+                            return "Please enter name";
+                        }
+
+                        return undefined;
                     }
                 }}>
                     {(field) => (
                         <label className="flex flex-col gap-1" htmlFor="nameInput">
                             <p className="text-gray-600">Your name</p>
-                            <div className="p-3 bg-gray-800 flex rounded-lg">
-                                <div className="cursor-pointer text-gray-500">
+                            <div className={`p-3 bg-gray-800 flex rounded-lg ${!field.state.meta.isValid && 'border border-red-500'}`}>
+                                <div className={`cursor-pointer ${!field.state.meta.isValid ? 'text-red-500' : 'text-gray-500'}`}>
                                     <User size={23} />
                                 </div>
                                 <input value={field.state.value} onChange={(e) => field.handleChange(e.target.value)} className="flex-1 outline-0 px-3" type="text" id="nameInput" placeholder="your name" autoFocus />
                             </div>
+                            <FieldInfo field={field} />
                         </label>
                     )}
                 </form.Field>
 
                 {/* email input */}
-                <form.Field name="email">
+                <form.Field name="email" validators={{
+                    onChange: ({ value }) => {
+                        if (typeof value !== "string") {
+                            return "Invalid input";
+                        }
+
+                        if (!value.trim()) {
+                            return "Please enter email";
+                        }
+
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                        if (!emailRegex.test(value.trim())) {
+                            return "Please enter an email address";
+                        }
+
+                        return undefined;
+                    }
+                }}>
                     {(field) => (
                         <label className="flex flex-col gap-1" htmlFor="emailInput">
                             <p className="text-gray-600">Your email</p>
-                            <div className="p-3 bg-gray-800 flex rounded-lg">
-                                <div className="cursor-pointer text-gray-500">
+                            <div className={`p-3 bg-gray-800 flex rounded-lg ${!field.state.meta.isValid && 'border border-red-500'}`}>
+                                <div className={`cursor-pointer ${!field.state.meta.isValid ? 'text-red-500' : 'text-gray-500'}`}>
                                     <Mail size={23} />
                                 </div>
                                 <input value={field.state.value} onChange={(e) => field.handleChange(e.target.value)} className="flex-1 outline-0 px-3" type="email" id="emailInput" placeholder="mail@example.com" />
                             </div>
+                            <FieldInfo field={field} />
                         </label>
                     )}
                 </form.Field>
