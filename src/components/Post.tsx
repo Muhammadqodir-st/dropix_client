@@ -6,6 +6,7 @@ import { PostProp } from "@/types/post";
 
 // lucide icons
 import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
+import LikeButton from "./LikeButton";
 
 export default function Post({ item }: { item: PostProp }) {
     return (
@@ -37,7 +38,7 @@ export default function Post({ item }: { item: PostProp }) {
                 {/* top */}
                 <div className="w-full flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <button><Heart size={26} /></button>
+                        <LikeButton id={item.id} likes={item.likes} />
                         <button><MessageCircle size={26} /></button>
                         <button><Send size={26} /></button>
                     </div>

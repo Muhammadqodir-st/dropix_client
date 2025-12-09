@@ -7,8 +7,8 @@ export interface PostProp {
     image: string,
     autherId: string
     auther: AutherProp,
-    likes: LikeProp,
-    comments: CommentProp,
+    likes: LikeProp[],
+    comments: CommentProp[],
     createdAt: Date,
     updateAt: Date
 }
