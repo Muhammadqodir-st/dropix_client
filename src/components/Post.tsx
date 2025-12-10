@@ -7,6 +7,7 @@ import { PostProp } from "@/types/post";
 // lucide icons
 import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
 import LikeButton from "./LikeButton";
+import PostImage from "./PostImage";
 
 export default function Post({ item }: { item: PostProp }) {
     return (
@@ -30,7 +31,7 @@ export default function Post({ item }: { item: PostProp }) {
 
             {/* body */}
             <div className="w-full rounded-lg bg-black overflow-hidden">
-                <Image className="object-cover" src={item.image} width={800} height={800} alt={item.title} />
+                <PostImage item={item} />
             </div>
 
             {/* bottom */}
