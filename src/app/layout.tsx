@@ -36,7 +36,17 @@ export default function RootLayout({
           <ReduxProvider>
             <StoreUser />
             <NextTopLoader color="#1D4ED8" />
-            <Toaster />
+            <Toaster position="top-center"
+              toastOptions={{
+                style: {
+                  background: '#374151',
+                  color: '#fff',
+                  fontSize: '14px',
+                  borderRadius: '10px',
+                  padding: '5px 10px',
+                }
+              }}
+            />
             {children}
           </ReduxProvider>
         </TranstackQueryProvider>
