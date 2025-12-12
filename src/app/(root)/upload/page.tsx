@@ -114,7 +114,7 @@ export default function Upload() {
                             <div className="w-full h-full flex justify-between gap-3">
 
                                 {/* file left */}
-                                <label className={`${value ? 'w-[55%]' : 'w-full'} flex items-center justify-center cursor-pointer`} htmlFor="imageInput">
+                                <label className={`${value ? 'w-[55%]' : 'w-full'}  flex items-center justify-center cursor-pointer`} htmlFor="imageInput">
                                     <input className="hidden" type="file" id="imageInput" onChange={(e) => {
                                         const file = e.target.files?.[0] || null
                                         field.handleChange(file)
@@ -122,7 +122,7 @@ export default function Upload() {
                                     }} disabled={uploadMutation.isPending} />
                                     {image ? (
                                         <div className="w-full h-full flex items-center justify-center object-cover bg-zinc-800">
-                                            <Image className="w-full object-cover" src={image} width={800} height={800} alt="image" />
+                                            <Image className="w-full max-h-180 object-cover" src={image} width={800} height={800} alt="image" />
                                         </div>
                                     ) : (
                                         <div className="w-full h-full flex flex-col items-center justify-center gap-3">

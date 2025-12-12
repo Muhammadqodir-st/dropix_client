@@ -39,7 +39,7 @@ export default function Post({ item }: { item: PostProp }) {
                 {/* top */}
                 <div className="w-full flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <LikeButton id={item.id} likes={item.likes} />
+                        <LikeButton postId={item.id} likes={item.likes} />
                         <button><MessageCircle size={26} /></button>
                         <button><Send size={26} /></button>
                     </div>
