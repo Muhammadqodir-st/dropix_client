@@ -2,32 +2,20 @@ import { fetcher, getToken } from "../fetcher";
 
 // get all post
 export function getAll() {
-    const token = getToken()
-
-    if (!token) {
-        alert("Token not found")
-    }
-
     return fetcher("/post", {
         method: "GET",
         headers: {
-            'Authorization': `Bearer ${token}`
+            "Content-type": 'application/json'
         }
     })
 };
 
 // get by id
 export function getId(id: string) {
-    const token = getToken()
-
-    if (!token) {
-        alert("Token not found")
-    };
-
     return fetcher(`/post/${id}`, {
         method: "GET",
         headers: {
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
         }
     })
 };
