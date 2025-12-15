@@ -86,7 +86,7 @@ export default function Upload() {
 
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-3">
 
             {/* router back */}
             <button disabled={uploadMutation.isPending} onClick={() => router.back()} className="absolute top-4 right-4 cursor-pointer">

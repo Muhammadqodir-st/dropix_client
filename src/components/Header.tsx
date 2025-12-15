@@ -10,7 +10,7 @@ export default function Header() {
     const user = useSelector((state: RootState) => state.user.data)
 
     return (
-        <div className="w-full py-6 px-4 flex items-center gap-3">
+        <div className="w-full sticky top-0 z-2 bg-black py-6 px-4 flex items-center gap-3">
             <label className="flex-1 flex items-center gap-2 border p-2 rounded-lg" htmlFor="searchInput">
                 <Search />
                 <input className="outline-0" type="text" name="search" id="searchInput" />
