@@ -1,6 +1,6 @@
 export default function PostLoader() {
     return (
-        <div className="w-115 flex flex-col gap-2 animate-pulse">
+        <div className="w-80 flex flex-col gap-2 mb-5 animate-pulse">
 
             {/* header */}
             <div className="flex items-center justify-between px-1">

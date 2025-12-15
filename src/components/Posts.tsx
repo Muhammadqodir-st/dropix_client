@@ -15,13 +15,17 @@ export default function Posts() {
     });
 
     if (isPending) {
-        return Array.from({ length: 2 }).map((p, i) => (
-            <PostLoader key={i} />
-        ))
+        return (
+            <div className="w-full columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3">
+                {Array.from({ length: 10 }).map((p, i) => (
+                    <PostLoader key={i} />
+                ))}
+            </div>
+        )
     }
 
     return (
-        <ul>
+        <ul className="w-full columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3">
             {data?.map((item: PostProp) => (
                 <Post key={item.id} item={item} />
             ))}
