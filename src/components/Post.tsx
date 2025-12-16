@@ -1,5 +1,6 @@
 // next
 import Image from "next/image";
+import Link from "next/link";
 
 // post prop
 import { PostProp } from "@/types/post";
@@ -26,9 +27,9 @@ export default function Post({ item }: { item: PostProp }) {
             </div>
 
             {/* body */}
-            <div className="w-full rounded-lg bg-black overflow-hidden">
+            <Link href={`/post/${item.id}`} className="w-full rounded-lg bg-black overflow-hidden">
                 <PostImage item={item} />
-            </div>
+            </Link>
 
             {/* bottom */}
             <div className="w-full px-1">
