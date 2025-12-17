@@ -1,5 +1,26 @@
 import { fetcher, getToken } from "../fetcher";
 
+// get all
+export function getAllLike() {
+    return fetcher('/like', {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
+
+// get post id
+export function getByIdLike(data: { id: string }) {
+    return fetcher(`/like/${data.id}`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
+
+// create like
 export function createNewLike(data: { postId: string }) {
     const token = getToken()
 
@@ -7,8 +28,8 @@ export function createNewLike(data: { postId: string }) {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
     })
 };
