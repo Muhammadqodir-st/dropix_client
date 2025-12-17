@@ -14,7 +14,7 @@ export default function SinglePostImage({ item }: { item: PostProp }) {
                 <div className="w-full h-full absolute top-0 bg-neutral-800 flex items-center justify-center animate-pulse">
                 </div>
             }
-            <Image className="object-cover" src={item.image} width={1200} height={1200} alt={item.title} onLoad={() => setImageLoader(false)} />
+            <Image className="object-cover" src={item.image} width={1500} height={1500} alt={item.title} onLoad={() => setImageLoader(false)} />
         </div>
     );
 };

@@ -15,6 +15,7 @@ import { useEffect } from "react"
 
 // toast
 import toast from "react-hot-toast"
+import { Progress } from "../../../../components/ui/progress"
 
 export default function Verify() {
     const router = useRouter()
@@ -40,13 +41,13 @@ export default function Verify() {
 
         if (data?.statusCode && !data?.success) {
             toast.error(data?.message);
-            // return router.replace('/auth/login');
+            return router.replace('/auth/login');
         }
 
         if (error) {
             toast.error(error.message);
             console.log(error)
-            // return router.replace('/auth/login')
+            return router.replace('/auth/login')
         }
     }, [data, error, router]);
 
@@ -62,7 +63,7 @@ export default function Verify() {
                     </svg>
                 </div>
                 <div className="w-full bg-gray-900 rounded-lg flex items-center justify-start overflow-hidden">
-                    <button className="w-[90%] p-2 bg-indigo-700"></button>
+                    <Progress value={isPending ? 90 : 100} className="h-3" />
                 </div>
             </div>
         </div>
