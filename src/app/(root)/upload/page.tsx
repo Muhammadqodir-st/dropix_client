@@ -93,7 +93,7 @@ export default function Upload() {
                 <X size={28} />
             </button>
 
-            <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit() }} className="w-250 h-180 bg-zinc-900 rounded-xl flex flex-col overflow-hidden">
+            <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit() }} className="w-250 h-180 bg-zinc-900 rounded-xl flex flex-col">
                 <div className={`w-full p-2.5 bg-black ${uploadBtn && 'flex items-center justify-between'}`}>
                     {uploadBtn && (
                         <button disabled={uploadMutation.isPending} className="cursor-pointer" type="button" onClick={() => { form.setFieldValue("file", null); setUploadBtn(false) }}>
@@ -111,10 +111,10 @@ export default function Upload() {
                         const value = field.state.value as File || null
                         const image = value ? URL.createObjectURL(value) : ''
                         return (
-                            <div className="w-full h-full flex justify-between gap-3">
+                            <div className="w-full h-full flex justify-between gap-3 overflow-hidden">
 
                                 {/* file left */}
-                                <label className={`${value ? 'w-[55%]' : 'w-full'}  flex items-center justify-center cursor-pointer`} htmlFor="imageInput">
+                                <label className={`${value ? 'w-[55%]' : 'w-full'}  flex items-center justify-center cursor-pointer rounded-xl overflow-hidden`} htmlFor="imageInput">
                                     <input className="hidden" type="file" id="imageInput" onChange={(e) => {
                                         const file = e.target.files?.[0] || null
                                         field.handleChange(file)
@@ -122,7 +122,7 @@ export default function Upload() {
                                     }} disabled={uploadMutation.isPending} />
                                     {image ? (
                                         <div className="w-full h-full flex items-center justify-center object-cover bg-zinc-800">
-                                            <Image className="w-full max-h-180 object-cover" src={image} width={800} height={800} alt="image" />
+                                            <Image className="w-full max-h-168 object-cover" src={image} width={800} height={800} alt="image" />
                                         </div>
                                     ) : (
                                         <div className="w-full h-full flex flex-col items-center justify-center gap-3">
