@@ -35,7 +35,7 @@ export default function LikeButton({ postId, likes }: { postId: string, likes: L
 
     return (
         <button onClick={() => likeMutation.mutateAsync()} className="flex items-center gap-2">
-            <Heart size={26} className={`${!!liked ? 'text-red-500' : null}`} />
+            <Heart size={26} className={`${liked ? 'text-red-500' : ''}`} />
             <p className="font-semibold">{likes.length}</p>
         </button>
     )
