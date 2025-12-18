@@ -8,7 +8,7 @@ export default function Loading() {
                 </div>
 
                 {/* right side */}
-                <div className="w-[40%] bg-gray-800 flex flex-col">
+                <div className="w-[38%] bg-zinc-800 flex flex-col">
                     {/* header */}
                     <div className="flex items-center justify-between border-b border-zinc-700 p-4">
                         <div className="flex items-center gap-2">
@@ -22,73 +22,73 @@ export default function Loading() {
                     <div className="flex-1 p-4 space-y-3 flex flex-col gap-8">
                         <div className="flex items-start gap-2 animate-pulse">
                             {/* avatar skeleton */}
-                            <div className="w-7 h-7 rounded-full bg-gray-700"></div>
+                            <div className="w-7 h-7 rounded-full bg-zinc-700"></div>
 
                             {/* text skeleton */}
                             <div className="flex-1 space-y-1">
                                 {/* comment text lines */}
-                                <div className="w-full h-3 bg-gray-700 rounded"></div>
-                                <div className="w-[85%] h-3 bg-gray-700 rounded"></div>
+                                <div className="w-full h-3 bg-zinc-700 rounded"></div>
+                                <div className="w-[85%] h-3 bg-zinc-700 rounded"></div>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-2 animate-pulse">
                             {/* avatar skeleton */}
-                            <div className="w-7 h-7 rounded-full bg-gray-700"></div>
+                            <div className="w-7 h-7 rounded-full bg-zinc-700"></div>
 
                             {/* text skeleton */}
                             <div className="flex-1 space-y-1">
                                 {/* comment text lines */}
-                                <div className="w-full h-3 bg-gray-700 rounded"></div>
-                                <div className="w-[85%] h-3 bg-gray-700 rounded"></div>
+                                <div className="w-full h-3 bg-zinc-700 rounded"></div>
+                                <div className="w-[85%] h-3 bg-zinc-700 rounded"></div>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-2 animate-pulse">
                             {/* avatar skeleton */}
-                            <div className="w-7 h-7 rounded-full bg-gray-700"></div>
+                            <div className="w-7 h-7 rounded-full bg-zinc-700"></div>
 
                             {/* text skeleton */}
                             <div className="flex-1 space-y-1">
                                 {/* comment text lines */}
-                                <div className="w-full h-3 bg-gray-700 rounded"></div>
-                                <div className="w-[85%] h-3 bg-gray-700 rounded"></div>
+                                <div className="w-full h-3 bg-zinc-700 rounded"></div>
+                                <div className="w-[85%] h-3 bg-zinc-700 rounded"></div>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-2 animate-pulse">
                             {/* avatar skeleton */}
-                            <div className="w-7 h-7 rounded-full bg-gray-700"></div>
+                            <div className="w-7 h-7 rounded-full bg-zinc-700"></div>
 
                             {/* text skeleton */}
                             <div className="flex-1 space-y-1">
                                 {/* comment text lines */}
-                                <div className="w-full h-3 bg-gray-700 rounded"></div>
-                                <div className="w-[85%] h-3 bg-gray-700 rounded"></div>
+                                <div className="w-full h-3 bg-zinc-700 rounded"></div>
+                                <div className="w-[85%] h-3 bg-zinc-700 rounded"></div>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-2 animate-pulse">
                             {/* avatar skeleton */}
-                            <div className="w-7 h-7 rounded-full bg-gray-700"></div>
+                            <div className="w-7 h-7 rounded-full bg-zinc-700"></div>
 
                             {/* text skeleton */}
                             <div className="flex-1 space-y-1">
                                 {/* comment text lines */}
-                                <div className="w-full h-3 bg-gray-700 rounded"></div>
-                                <div className="w-[85%] h-3 bg-gray-700 rounded"></div>
+                                <div className="w-full h-3 bg-zinc-700 rounded"></div>
+                                <div className="w-[85%] h-3 bg-zinc-700 rounded"></div>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-2 animate-pulse">
                             {/* avatar skeleton */}
-                            <div className="w-7 h-7 rounded-full bg-gray-700"></div>
+                            <div className="w-7 h-7 rounded-full bg-zinc-700"></div>
 
                             {/* text skeleton */}
                             <div className="flex-1 space-y-1">
                                 {/* comment text lines */}
-                                <div className="w-full h-3 bg-gray-700 rounded"></div>
-                                <div className="w-[85%] h-3 bg-gray-700 rounded"></div>
+                                <div className="w-full h-3 bg-zinc-700 rounded"></div>
+                                <div className="w-[85%] h-3 bg-zinc-700 rounded"></div>
                             </div>
                         </div>
                     </div>

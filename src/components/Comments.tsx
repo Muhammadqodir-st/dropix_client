@@ -18,7 +18,7 @@ export default function Comments({ item }: { item: PostProp }) {
 
     if (isPending) {
         return (
-            <div className=" max-h-full flex flex-col gap-7 overflow-y-auto">
+            <div className="max-h-full flex flex-col gap-7 overflow-y-auto">
                 {Array.from({ length: 12 }).map((p, i) => (
                     <CommentLoader key={i} />
                 ))}
@@ -27,7 +27,7 @@ export default function Comments({ item }: { item: PostProp }) {
     }
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="max-h-full flex flex-col gap-6 overflow-y-auto">
             {data?.comment.length !== 0 ? (
                 data?.comment.map((item: CommentProp) => (
                     <Comment key={item.id} item={item} />

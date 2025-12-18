@@ -1,3 +1,4 @@
+import { CommentProp } from "@/types/comment";
 import { fetcher, getToken } from "../fetcher";
 
 // all
@@ -21,7 +22,7 @@ export function getByIdComment(data: { id: string }) {
 }
 
 // create
-export function createComment(data: { text: string }, id: string) {
+export function createComment(id: string, data: { text: string; },) {
     const token = getToken()
 
     return fetcher(`/comment/create/${id}`, {

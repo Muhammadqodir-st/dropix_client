@@ -13,7 +13,8 @@ import Image from "next/image";
 import SinglePostImage from "./SinglePost-image";
 import LikeButton from "@/components/LikeButton";
 import { useRouter } from "next/navigation";
-import Comments from "../../../../../components/Comments";
+import Comments from "@/components/Comments";
+import AddComment from "@/components/AddComment";
 
 
 export default function SinglePost({ item }: { item: PostProp }) {
@@ -21,7 +22,7 @@ export default function SinglePost({ item }: { item: PostProp }) {
     const router = useRouter()
 
     return (
-        <div className="fixed inset-0 bg-red-500 flex items-center justify-center z-3">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-3">
             <button onClick={() => router.back()} className="absolute top-4 right-4 cursor-pointer">
                 <X size={28} />
             </button>
@@ -29,7 +30,7 @@ export default function SinglePost({ item }: { item: PostProp }) {
                 <div className="my-auto">
                     <SinglePostImage item={item} />
                 </div>
-                <div className="w-200 bg-gray-800">
+                <div className="w-200 bg-zinc-900 overflow-hidden">
                     {/* header */}
                     <div className="flex items-center justify-between border-b p-4">
                         {/* auther */}
@@ -45,7 +46,7 @@ export default function SinglePost({ item }: { item: PostProp }) {
                     </div>
 
                     {/* body */}
-                    <div className="w-full h-[80%] bg-gray-900 p-4 overflow-hidden">
+                    <div className="h-[80%] p-4 overflow-hidden">
                         <Comments item={item} />
                     </div>
 
@@ -61,8 +62,8 @@ export default function SinglePost({ item }: { item: PostProp }) {
                         </div>
 
                         {/* add comment */}
-                        <div className="px-4">
-                            s
+                        <div className="p-4">
+                            <AddComment id={item.id} />
                         </div>
                     </div>
                 </div>

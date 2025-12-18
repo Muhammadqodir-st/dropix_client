@@ -155,9 +155,6 @@ export default function Upload() {
                                                     return "Title must not be greater than 200 characters";
                                                 }
 
-                                                console.log(value.length);
-                                                
-
                                                 return undefined;
                                             }
                                         }}>
