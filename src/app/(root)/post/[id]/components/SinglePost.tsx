@@ -54,7 +54,7 @@ export default function SinglePost({ item }: { item: PostProp }) {
                     <div className="w-full">
                         <div className="w-full flex items-center justify-between px-4 py-3 border">
                             <div className="flex items-center gap-5">
-                                {/* <LikeButton postId={item.id} likes={item.likes} /> */}
+                                <LikeButton postId={item.id} likes={item.likes} />
                                 <button><MessageCircle size={26} /></button>
                                 <button><Send size={26} /></button>
                             </div>
