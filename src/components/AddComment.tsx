@@ -20,7 +20,6 @@ export default function AddComment({ id }: { id: string }) {
         },
         onError: (err: { message: string }) => {
             toast.error(err.message)
-            console.log(err, 'this error auth login');
         }
     })
 
