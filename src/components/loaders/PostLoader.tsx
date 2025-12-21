@@ -1,25 +1,38 @@
 export default function PostLoader() {
     return (
-        <div className="w-80 flex flex-col gap-2 mb-5 animate-pulse">
+        <div className="relative overflow-hidden rounded-4xl mb-5 animate-pulse">
 
-            {/* header */}
-            <div className="flex items-center justify-between px-1">
-                {/* auther */}
-                <div className="flex items-center gap-1">
-                    <div className="w-9 h-9 rounded-full bg-neutral-700"></div>
-                    <div className="w-20 h-3 rounded bg-neutral-700"></div>
+            {/* image skeleton */}
+            <div className="w-full h-100 bg-neutral-800" />
+
+            {/* overlay */}
+            <div className="absolute inset-0 bg-black/20 flex flex-col justify-between">
+
+                {/* TOP */}
+                <div className="flex items-start justify-between p-3">
+
+                    {/* author */}
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-neutral-800" />
+                        <div className="w-24 h-3 rounded bg-neutral-800" />
+                    </div>
+
+                    {/* actions */}
+                    <div className="flex flex-col gap-4 backdrop-blur-md bg-white/10 p-2 rounded-4xl">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                            <div
+                                key={i}
+                                className="w-6 h-6 rounded-full bg-neutral-800"
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
 
-            {/* body image */}
-            <div className="w-full h-80 bg-neutral-800 rounded-lg"></div>
-
-            {/* bottom */}
-            <div className="w-full flex flex-col gap-3 px-1">
-
-                {/* title */}
-                <div className="w-4/5 h-3 bg-neutral-700 rounded"></div>
-                <div className="w-3/5 h-3 bg-neutral-700 rounded"></div>
+                {/* BOTTOM */}
+                <div className="p-3">
+                    <div className="w-[85%] h-3 rounded bg-neutral-800 mb-2" />
+                    <div className="w-[60%] h-3 rounded bg-neutral-800" />
+                </div>
             </div>
         </div>
     )

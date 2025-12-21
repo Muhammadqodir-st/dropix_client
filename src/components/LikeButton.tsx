@@ -46,7 +46,7 @@ export default function LikeButton({ postId, likes }: { postId: string, likes: L
 
     return (
         <button onClick={() => likeMutation.mutate()} className="flex flex-col items-center">
-            <Heart size={23} className={`transition-colors ${isLiked ? 'text-red-500 fill-red-500' : ''}`} />
+            <Heart size={22} className={`transition-colors ${isLiked ? 'text-red-500 fill-red-500' : ''}`} />
             <p className={`font-semibold text-sm ${likesCount === 0 && 'hidden'}`}>{likesCount > 0 && likesCount}</p>
         </button>
     )

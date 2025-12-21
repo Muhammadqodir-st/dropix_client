@@ -6,13 +6,13 @@ import Link from "next/link";
 import { PostProp } from "@/types/post";
 
 // lucide icons
-import { Bookmark, MessageCircle, Send } from "lucide-react";
+import { Bookmark, Ellipsis, MessageCircle, Send } from "lucide-react";
 import PostImage from "./PostImage";
 import LikeButton from "./LikeButton";
 
 export default function Post({ item }: { item: PostProp }) {
     return (
-        <div className="w-90 h-90 relative overflow-hidden rounded-4xl group">
+        <div className=" relative overflow-hidden rounded-4xl group mb-5">
             {/* background */}
             <PostImage item={item} />
 
@@ -33,31 +33,25 @@ export default function Post({ item }: { item: PostProp }) {
                             <LikeButton postId={item.id} likes={item.likes} />
                         </div>
                         <button className="hover:scale-110 transition cursor-pointer">
-                            <MessageCircle size={23} />
+                            <MessageCircle size={22} />
                         </button>
                         <button className="hover:scale-110 transition cursor-pointer">
-                            <Bookmark size={23} />
+                            <Bookmark size={22} />
                         </button>
                         <button className="hover:scale-110 transition cursor-pointer">
-                            <Send size={23} />
+                            <Send size={22} />
+                        </button>
+                        <button className="hover:scale-110 transition cursor-pointer">
+                            <Ellipsis size={22} />
                         </button>
                     </div>
                 </div>
 
                 {/* BOTTOM */}
-                <div className="p-4">
-                    <p className="text-sm opacity-90 mb-3">
-                        {item.title}
+                <div className="p-3">
+                    <p className="text-sm opacity-90">
+                        {item.title.length > 55 ? item.title.slice(0, 55) + '. . .' : item.title}
                     </p>
-
-                    <div className="flex gap-2">
-                        <button className="flex-1 py-2 rounded-full text-sm bg-blue-700 hover:bg-blue-800 cursor-pointer transition">
-                            Follow
-                        </button>
-                        <button className="flex-1 py-2 rounded-full text-sm bg-white/20 hover:bg-white/30 cursor-pointer transition">
-                            Message
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>

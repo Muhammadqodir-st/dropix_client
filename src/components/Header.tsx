@@ -21,7 +21,7 @@ export default function Header() {
     const user = useSelector((state: RootState) => state.user.data)
 
     return (
-        <header className="w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3">
+        <header className="w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3 bg-[#030712]">
             <label className="flex-1 flex items-center gap-2 border border-white p-1.75 rounded-lg" htmlFor="searchInput">
                 <Search size={23} />
                 <input className="outline-0" type="text" name="search" id="searchInput" />
