@@ -31,27 +31,27 @@ export default function Sidebar() {
 
                 {/* navigate */}
                 <ul className="flex flex-col gap-3">
-                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/" ? 'bg-zinc-900' : 'bg-none hover:bg-zinc-900'}`}>
+                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/" ? 'bg-gray-900' : 'bg-none hover:bg-gray-900'}`}>
                         <House strokeWidth={`${pathname === "/" ? '2.7' : '2'}`} />
                     </Link>
+                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/search" ? 'bg-gray-900' : 'bg-none hover:bg-gray-900'}`}>
 
-                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/search" ? 'bg-zinc-900' : 'bg-none hover:bg-zinc-900'}`}>
                         <Search strokeWidth={`${pathname === "/search" ? '2.7' : '2'}`} />
                     </Link>
 
-                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/notifications" ? 'bg-zinc-900' : 'bg-none hover:bg-zinc-900'}`}>
+                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/notifications" ? 'bg-gray-900' : 'bg-none hover:bg-gray-900'}`}>
                         <Bell strokeWidth={`${pathname === "/notifications" ? '2.7' : '2'}`} />
                     </Link>
 
-                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/direct" ? 'bg-zinc-900' : 'bg-none hover:bg-zinc-900'}`}>
+                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/direct" ? 'bg-gray-900' : 'bg-none hover:bg-gray-900'}`}>
                         <Send strokeWidth={`${pathname === "/direct" ? '2.7' : '2'}`} />
                     </Link>
 
-                    <Link href={'/upload'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/upload" ? 'bg-zinc-900' : 'bg-none hover:bg-zinc-900'}`}>
+                    <Link href={'/upload'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/upload" ? 'bg-gray-900' : 'bg-none hover:bg-gray-900'}`}>
                         <Plus strokeWidth={`${pathname === "/upload" ? '2.7' : '2'}`} />
                     </Link>
 
-                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/profile" ? 'bg-zinc-900' : 'bg-none hover:bg-zinc-900'}`}>
+                    <Link href={'/'} className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === "/profile" ? 'bg-gray-900' : 'bg-none hover:bg-gray-900'}`}>
                         <UserRound strokeWidth={`${pathname === "/profile" ? '2.7' : '2'}`} />
                     </Link>
 

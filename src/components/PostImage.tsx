@@ -7,12 +7,12 @@ export default function PostImage({ item }: { item: PostProp }) {
     const [imageLoader, setImageLoader] = useState(true)
 
     return (
-        <div className="w-full h-full relative rounded">
+        <div className="w-full h-full">
             {imageLoader &&
                 <div className="w-full h-full absolute top-0 bg-neutral-800 flex items-center justify-center animate-pulse">
                 </div>
             }
-            <Image className="object-cover" src={item.image} width={800} height={800} alt={item.title} onLoad={() => setImageLoader(false)} />
+            <Image className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src={item.image} alt={item.title} width={800} height={800} onLoad={() => setImageLoader(false)} />
         </div>
     );
 };

@@ -21,7 +21,7 @@ export default function Header() {
     const user = useSelector((state: RootState) => state.user.data)
 
     return (
-        <header className="w-full sticky top-0 z-2 bg-black py-6 px-4 flex items-center gap-3">
+        <header className="w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3">
             <label className="flex-1 flex items-center gap-2 border border-white p-1.75 rounded-lg" htmlFor="searchInput">
                 <Search size={23} />
                 <input className="outline-0" type="text" name="search" id="searchInput" />
@@ -40,23 +40,23 @@ export default function Header() {
                                 <Image className="w-9 h-9 rounded-full" src={user ? user.avatar : '/assets/defualt-user.jpg'} alt={user ? user.name : 'username'} width={100} height={100} />
                             </div>
                         </PopoverTrigger>
-                        <PopoverContent className="mx-3 my-2 w-65 border border-gray-800 bg-black">
+                        <PopoverContent className="mx-3 my-2 w-65 border border-gray-800">
                             <ul className="flex flex-col gap-2">
                                 <li className="flex items-center gap-2 px-1">
                                     <Image className="w-7 h-7 rounded-full" src={user ? user.avatar : '/assets/defualt-user.jpg'} alt={user ? user.name : 'username'} width={100} height={100} />
                                     <p className="text-sm font-semibold">{user.name}</p>
                                 </li>
                                 <ul className="flex flex-col border-t border-b py-1">
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-zinc-900">
+                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                         <User size={20} />
                                         <p className="text-sm font-semibold">Profile</p>
                                     </li>
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-zinc-900">
+                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                         <UserPen size={20} />
                                         <p className="text-sm font-semibold">Edit profile</p>
                                     </li>
                                 </ul>
-                                <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-zinc-900">
+                                <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                     <LogOut size={20} />
                                     <p className="text-sm font-semibold">LogOut</p>
                                 </li>

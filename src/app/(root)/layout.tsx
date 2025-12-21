@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <main className="flex dark:bg-black">
+        <main className="flex">
             <Sidebar />
             <div className="flex-1">
                 <Header />
