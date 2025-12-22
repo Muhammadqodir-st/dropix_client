@@ -1,11 +1,12 @@
-import { AutherProp, PostProp } from "./post";
+import { PostProp } from "./post";
+import { UserProp } from "./user";
 
 export interface CommentProp {
     id: string,
     text: string,
     userId: string,
-    user: AutherProp,
+    user: UserProp,
     postId: string,
     post: PostProp,
-    createdAt: Date
+    createdAt: string
 }

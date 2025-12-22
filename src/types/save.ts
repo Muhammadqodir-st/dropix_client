@@ -7,5 +7,5 @@ export interface SaveProp {
     user: UserProp;
     postId: string;
     post: PostProp;
-    createdAt: Date,
+    createdAt: string,
 }

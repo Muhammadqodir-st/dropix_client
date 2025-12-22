@@ -12,6 +12,6 @@ export interface PostProp {
     likes: LikeProp[],
     comments: CommentProp[],
     saves: SaveProp[],
-    createdAt: Date,
-    updateAt: Date
+    createdAt: string,
+    updateAt: string
 }

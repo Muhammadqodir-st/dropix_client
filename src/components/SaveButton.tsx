@@ -25,7 +25,7 @@ export default function SaveButton({ item, saves }: { item: PostProp, saves: Sav
     })
 
     return (
-        <button onClick={() => saveMutation.mutate()}>
+        <button className="cursor-pointer" onClick={() => saveMutation.mutate()}>
             <Bookmark className={`${isSaved ? 'fill-white' : ''}`} size={22} />
         </button>
     )

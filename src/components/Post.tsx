@@ -10,6 +10,7 @@ import { Bookmark, Ellipsis, MessageCircle, Send } from "lucide-react";
 import PostImage from "./PostImage";
 import LikeButton from "./LikeButton";
 import SaveButton from "./SaveButton";
+import CommentButton from "./CommentButton";
 
 export default function Post({ item }: { item: PostProp }) {
     return (
@@ -33,9 +34,9 @@ export default function Post({ item }: { item: PostProp }) {
                         <div className="hover:scale-110 transition cursor-pointer">
                             <LikeButton postId={item.id} likes={item.likes} />
                         </div>
-                        <button className="hover:scale-110 transition cursor-pointer">
-                            <MessageCircle size={22} />
-                        </button>
+                        <div className="hover:scale-110 transition cursor-pointer">
+                            <CommentButton item={item} />
+                        </div>
                         <div className="hover:scale-110 transition cursor-pointer">
                             <SaveButton item={item} saves={item.saves} />
                         </div>
