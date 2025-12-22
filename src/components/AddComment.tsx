@@ -45,6 +45,9 @@ export default function AddComment({ id }: { id: string }) {
     // mutation
     const commetnMutation = useMutation({
         mutationFn: ({ text }: { text: string }) => createComment(id, { text }),
+        onError(error, variables, onMutateResult, context) {
+            console.log(error);
+        },
     })
 
     return (

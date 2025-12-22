@@ -10,7 +10,7 @@ export default function CommentButton({ item }: { item: PostProp }) {
         <Popover>
             <PopoverTrigger className="cursor-pointer"><MessageCircle size={22} /></PopoverTrigger>
 
-            <PopoverContent className="w-90">
+            <PopoverContent className="w-90 flex flex-col gap-3">
                 {/* top */}
                 <div className="flex items-center justify-between">
                     <PopoverClose className="cursor-pointer" asChild>

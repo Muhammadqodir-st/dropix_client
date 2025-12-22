@@ -6,7 +6,9 @@ import Link from "next/link";
 import { PostProp } from "@/types/post";
 
 // lucide icons
-import { Bookmark, Ellipsis, MessageCircle, Send } from "lucide-react";
+import { Ellipsis, Send } from "lucide-react";
+
+// components
 import PostImage from "./PostImage";
 import LikeButton from "./LikeButton";
 import SaveButton from "./SaveButton";
