@@ -1,26 +1,17 @@
 import { CommentProp } from "./comment"
 import { LikeProp } from "./like"
+import { SaveProp } from "./save"
+import { UserProp } from "./user"
 
 export interface PostProp {
     id: string,
     title: string,
     image: string,
     autherId: string
-    auther: AutherProp,
+    auther: UserProp,
     likes: LikeProp[],
     comments: CommentProp[],
+    saves: SaveProp[],
     createdAt: Date,
     updateAt: Date
-}
-
-export interface AutherProp {
-    id: string,
-    name: string,
-    email: string,
-    avatar: string;
-    Post: PostProp,
-    likes: LikeProp,
-    comments: CommentProp
-    createdAt: string,
-    updatedAt: string
 }

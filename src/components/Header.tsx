@@ -9,7 +9,7 @@ import { Popover } from "@radix-ui/react-popover";
 import { PopoverContent, PopoverTrigger } from "../../components/ui/popover";
 
 // lucide react
-import { Bolt, LogOut, Pencil, Plus, Search, User, UserPen } from "lucide-react";
+import { Bolt, Bookmark, Heart, LogOut, MessageCircle, Pencil, Plus, Search, Settings, User, UserPen, WalletCards } from "lucide-react";
 
 // next
 import Image from "next/image";
@@ -48,12 +48,28 @@ export default function Header() {
                                 </li>
                                 <ul className="flex flex-col border-t border-b py-1">
                                     <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
-                                        <User size={20} />
-                                        <p className="text-sm font-semibold">Profile</p>
-                                    </li>
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                         <UserPen size={20} />
                                         <p className="text-sm font-semibold">Edit profile</p>
+                                    </li>
+                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                        <Heart size={20} />
+                                        <p className="text-sm font-semibold">Likes post</p>
+                                    </li>
+                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                        <MessageCircle size={20} />
+                                        <p className="text-sm font-semibold">Comments</p>
+                                    </li>
+                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                        <Bookmark size={20} />
+                                        <p className="text-sm font-semibold">Saved post</p>
+                                    </li>
+                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                        <WalletCards size={20} />
+                                        <p className="text-sm font-semibold">My posts</p>
+                                    </li>
+                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                        <Settings size={20} />
+                                        <p className="text-sm font-semibold">Settings</p>
                                     </li>
                                 </ul>
                                 <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
