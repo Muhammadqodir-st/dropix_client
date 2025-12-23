@@ -1,5 +1,5 @@
 // tanstack
-import { useForm } from "@tanstack/react-form"
+import { AnyFieldApi, useForm } from "@tanstack/react-form"
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 // redux
@@ -21,6 +21,18 @@ import { createComment } from "@/api/services/comment";
 // IForm
 interface IForm {
     text: string;
+}
+
+// form info
+function FieldInfo({ field }: { field: AnyFieldApi }) {
+    return (
+        <>
+            {field.state.meta.isTouched && !field.state.meta.isValid ? (
+                <em className="text-sm text-red-500">{field.state.meta.errors.join(',')}</em>
+            ) : null}
+            {field.state.meta.isValidating ? 'Validating...' : null}
+        </>
+    )
 }
 
 export default function AddComment({ id }: { id: string }) {
@@ -58,13 +70,28 @@ export default function AddComment({ id }: { id: string }) {
             </div>
 
             {/* input */}
-            <form.Field name="text">
+            <form.Field name="text" validators={{
+                onChange: ({ value }) => {
+                    if (typeof value !== "string") {
+                        return "Invalid input";
+                    }
+
+                    if (!value.trim()) {
+                        return "fill";
+                    }
+
+                    return undefined;
+                }
+            }}>
                 {(field) => (
-                    <input value={field.state.value} onChange={(e) => field.handleChange(e.target.value)} className="flex-1 outline-0" type="text" placeholder="Add a commet..." />
+                    <>
+                        <input value={field.state.value} onChange={(e) => field.handleChange(e.target.value)} className="flex-1 outline-0" type="text" placeholder="Add a commet..." />
+                        <FieldInfo field={field} />
+                    </>
                 )}
             </form.Field>
 
-            <button disabled={commetnMutation.isPending} className="cursor-pointer" type="submit">
+            <button disabled={commetnMutation.isPending} className="cursor-pointer px-1" type="submit">
                 {commetnMutation.isPending ? <ButtonLoader /> : <SendHorizontal size={23} />}
             </button>
         </form>

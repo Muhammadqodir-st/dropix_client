@@ -16,7 +16,7 @@ export default function CommentButton({ item }: { item: PostProp }) {
                     <PopoverClose className="cursor-pointer" asChild>
                         <X size={20} />
                     </PopoverClose>
-                    <p className="text-sm font-semibold">Comments</p>
+                    <p className=" font-semibold">Comments</p>
                     <span />
                 </div>
 
