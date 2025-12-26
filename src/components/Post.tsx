@@ -20,7 +20,7 @@ export default function Post({ item }: { item: PostProp }) {
             {/* background */}
             <PostImage item={item} />
 
-            <div className="absolute inset-0 bg-black/25 backdrop-blur-[1px] flex flex-col justify-between hover:backdrop-blur-none">
+            <div className="absolute inset-0 bg-black/25 backdrop-blur-[1px] flex flex-col justify-between">
 
                 {/* TOP */}
                 <div className="flex items-start justify-between p-3">
