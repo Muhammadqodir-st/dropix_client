@@ -8,6 +8,7 @@ import { PostProp } from "@/types/post";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteByIdPost } from "@/api/services/post";
 import ButtonLoader from "./loaders/ButtonLoader";
+import Link from "next/link";
 
 export default function EllipsisButton({ item }: { item: PostProp }) {
 
@@ -51,14 +52,18 @@ export default function EllipsisButton({ item }: { item: PostProp }) {
                         Delete post
                     </button>
                 }
-                <button className="flex items-center gap-2 font-semibold py-1 px-3 rounded-lg cursor-pointer">
-                    <User size={20} />
-                    {user?.id === item.autherId ? 'View profile' : 'View user'}
+                <button>
+                    <Link href={'/profile'} className="flex items-center gap-2 font-semibold py-1 px-3 rounded-lg cursor-pointer">
+                        <User size={20} />
+                        {user?.id === item.autherId ? 'View profile' : 'View user'}
+                    </Link>
                 </button>
-                <button className="flex items-center gap-2 font-semibold py-1 px-3 rounded-lg cursor-pointer">
-                    <Download size={20} />
-                    Download
-                </button>
+                {user?.id !== item.autherId &&
+                    <button className="flex items-center gap-2 font-semibold py-1 px-3 rounded-lg cursor-pointer">
+                        <Download size={20} />
+                        Download
+                    </button>
+                }
             </PopoverContent>
         </Popover>
     )

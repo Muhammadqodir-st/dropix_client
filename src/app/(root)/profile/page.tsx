@@ -3,6 +3,8 @@
 import { RootState } from "@/lib/store"
 import Image from "next/image"
 import { useSelector } from "react-redux"
+import { Edit3, UserPen } from "lucide-react"
+import MyPosts from "@/components/MyPosts"
 
 export default function Profile() {
 
@@ -11,8 +13,46 @@ export default function Profile() {
 
 
     return (
-        <div className="w-full h-full p-4">
-            
+        <div className="max-w-4xl mx-auto p-6">
+
+            <div className="flex gap-6 items-center">
+
+                {/* image */}
+                <div className="relative w-32 h-32">
+                    <Image src={user ? user.avatar : "/avatar.png"} alt={user ? user.name : 'username'} fill className="rounded-full object-cover" />
+                </div>
+
+
+                <div className="flex-1">
+                    <div className="flex items-center gap-4">
+                        <h2 className="text-xl font-semibold">{user ? user.name : 'username'}</h2>
+                        <button className="flex items-center gap-2 px-4 py-1.5 border rounded-md text-sm cursor-pointer">
+                            <UserPen size={18} />
+                            Edit profile
+                        </button>
+                    </div>
+
+
+                    <div className="flex gap-6 mt-3 text-sm">
+                        <p><span className="font-semibold">12</span> posts</p>
+                        <p><span className="font-semibold">120</span> followers</p>
+                        <p><span className="font-semibold">80</span> following</p>
+                    </div>
+
+
+                    <p className="mt-3 text-sm text-gray-700 max-w-md">
+                        {user?.bio || "This user has no bio yet."}
+                    </p>
+                </div>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t mt-8"></div>
+
+            {/* Posts */}
+            <div className="mt-6">
+                {/* {user && <MyPosts id={user.id} />} */}
+            </div>
         </div>
     )
 }

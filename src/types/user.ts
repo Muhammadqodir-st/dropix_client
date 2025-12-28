@@ -8,10 +8,11 @@ export interface UserProp {
     name: string,
     email: string,
     avatar: string;
-    post: PostProp,
-    likes: LikeProp,
-    comments: CommentProp,
-    save: SaveProp,
+    bio: string;
+    posts: PostProp[],
+    likes: LikeProp[],
+    comments: CommentProp[],
+    save: SaveProp[],
     createdAt: string,
     updatedAt: string
 }
