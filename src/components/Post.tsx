@@ -13,6 +13,7 @@ import PostImage from "./PostImage";
 import LikeButton from "./LikeButton";
 import SaveButton from "./SaveButton";
 import CommentButton from "./CommentButton";
+import EllipsisButton from "./EllipsisButton";
 
 export default function Post({ item }: { item: PostProp }) {
     return (
@@ -20,7 +21,7 @@ export default function Post({ item }: { item: PostProp }) {
             {/* background */}
             <PostImage item={item} />
 
-            <div className="absolute inset-0 bg-black/25 backdrop-blur-[1px] flex flex-col justify-between">
+            <div className="absolute inset-0 bg-black/25 flex flex-col justify-between">
 
                 {/* TOP */}
                 <div className="flex items-start justify-between p-3">
@@ -45,9 +46,9 @@ export default function Post({ item }: { item: PostProp }) {
                         <button className="hover:scale-110 transition cursor-pointer">
                             <Send size={22} />
                         </button>
-                        <button className="hover:scale-110 transition cursor-pointer">
-                            <Ellipsis size={22} />
-                        </button>
+                        <div className="hover:scale-110 transition cursor-pointer">
+                            <EllipsisButton item={item} />
+                        </div>
                     </div>
                 </div>
 

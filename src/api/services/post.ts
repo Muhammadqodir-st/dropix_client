@@ -41,3 +41,16 @@ export async function createPost(post: { file: File | null, title: string }) {
         }
     })
 }
+
+// delete by id
+export function deleteByIdPost(id: string) {
+    const token = getToken()
+
+    return fetcher(`/post/${id}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}
