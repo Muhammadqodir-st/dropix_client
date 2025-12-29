@@ -55,7 +55,7 @@ export default function Profile() {
             </div>
 
             <div className="flex items-center justify-center gap-25 mt-8">
-                <button className="flex items-center gap-2 font-semibold p-3 border-b-2 border-transparent hover:border-white cursor-pointer"><PanelsTopLeft size={20} />Posts</button>
+                <button className="flex items-center gap-2 font-semibold p-3 border-b-2 border-white hover:border-white cursor-pointer"><PanelsTopLeft size={20} />Posts</button>
                 <button className="flex items-center gap-2 font-semibold p-3 border-b-2 border-transparent hover:border-white cursor-pointer"><Bookmark size={20} />Saved</button>
                 <button className="flex items-center gap-2 font-semibold p-3 border-b-2 border-transparent hover:border-white cursor-pointer"><PanelsTopLeft size={20} />Posts</button>
             </div>
@@ -65,7 +65,7 @@ export default function Profile() {
 
             {/* Posts */}
             <div className="mt-6">
-                {/* {user && <MyPosts id={user.id} />} */}
+                {user && <MyPosts id={user.id} />}
             </div>
         </div>
     )
