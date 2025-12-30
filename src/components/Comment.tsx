@@ -1,4 +1,4 @@
-import { timeAgo } from "@/functions/time.functions";
+import { timeAgo } from "@/functions/time.function";
 import { CommentProp } from "@/types/comment";
 import Image from "next/image";
 

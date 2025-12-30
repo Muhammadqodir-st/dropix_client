@@ -3,13 +3,14 @@
 import { useSelector } from "react-redux";
 import GetMyPosts from "../components/GetMyPosts";
 import { RootState } from "@/lib/store";
+import { ChevronLeft } from "lucide-react";
 
 export default function Page() {
-
     // user
     const user = useSelector((state: RootState) => state.user.data)
+
     return (
-        <div className="px-4 py-8">
+        <div className="px-4 py-5">
             {user && <GetMyPosts id={user.id} />}
         </div>
     )

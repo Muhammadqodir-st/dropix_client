@@ -9,10 +9,12 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 
 // lucide
-import { Bookmark, Edit3, PanelsTopLeft, UserPen } from "lucide-react"
+import { Bookmark, PanelsTopLeft, UserPen } from "lucide-react"
 
 // components
 import MyPosts from "@/components/MyPosts"
+import { useState } from "react"
+import MySaveds from "@/components/MySaveds"
 
 
 export default function Profile() {
@@ -20,8 +22,8 @@ export default function Profile() {
     // user
     const user = useSelector((state: RootState) => state.user.data)
 
-    // router
-    const router = useRouter()
+    // state
+    const [activePage, setActivePage] = useState<'posts' | 'saved' | 'tagged'>('posts')
 
 
     return (
@@ -55,9 +57,9 @@ export default function Profile() {
             </div>
 
             <div className="flex items-center justify-center gap-25 mt-8">
-                <button className="flex items-center gap-2 font-semibold p-3 border-b-2 border-white hover:border-white cursor-pointer"><PanelsTopLeft size={20} />Posts</button>
-                <button className="flex items-center gap-2 font-semibold p-3 border-b-2 border-transparent hover:border-white cursor-pointer"><Bookmark size={20} />Saved</button>
-                <button className="flex items-center gap-2 font-semibold p-3 border-b-2 border-transparent hover:border-white cursor-pointer"><PanelsTopLeft size={20} />Posts</button>
+                <button onClick={() => setActivePage('posts')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'posts' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><PanelsTopLeft size={20} />Posts</button>
+                <button onClick={() => setActivePage('saved')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'saved' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><Bookmark size={20} />Saved</button>
+                <button onClick={() => setActivePage('tagged')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'tagged' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><PanelsTopLeft size={20} />Posts</button>
             </div>
 
 
@@ -65,7 +67,8 @@ export default function Profile() {
 
             {/* Posts */}
             <div className="mt-6">
-                {user && <MyPosts id={user.id} />}
+                {activePage === 'posts' && user && <MyPosts id={user.id} />}
+                {activePage === 'saved' && user && <MySaveds id={user.id} />}
             </div>
         </div>
     )
