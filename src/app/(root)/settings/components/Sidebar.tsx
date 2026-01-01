@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 // lucide react
-import { UserPen } from "lucide-react";
+import { CircleUser, UserPen } from "lucide-react";
 
 export default function Sidebar() {
 
@@ -22,8 +22,8 @@ export default function Sidebar() {
 
             {/* navigate */}
             <ul className="flex flex-col gap-1">
-                <Link href={'/settings/edit'} className={`flex items-center gap-2 py-3 px-4 rounded-lg ${pathname === '/settings/edit' ? 'bg-gray-900' : 'hover:bg-gray-900'}`}>
-                    <UserPen size={22} />
+                <Link href={'/settings/edit'} className={`flex items-center gap-2 py-2.5 px-4 rounded-lg ${pathname === '/settings/edit' ? 'bg-gray-900' : 'hover:bg-gray-900'}`}>
+                    <CircleUser size={22} />
                     <p className="font-semibold">Edit profile</p>
                 </Link>
             </ul>
