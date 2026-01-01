@@ -1,8 +1,17 @@
+
+// api server
 import { getByIdUser } from "@/api/services/user"
+
+// components
 import PostLoader from "@/components/loaders/PostLoader"
 import Post from "@/components/Post"
+
+// type
 import { SaveProp } from "@/types/save"
+
+// tanstack
 import { useQuery } from "@tanstack/react-query"
+
 
 export default function GetMySaveds({ id }: { id: string }) {
 

@@ -1,9 +1,12 @@
 "use client"
 
+// redux
 import { useSelector } from "react-redux";
-import GetMyPosts from "../components/GetMyPosts";
 import { RootState } from "@/lib/store";
-import { ChevronLeft } from "lucide-react";
+
+// components
+import GetMyPosts from "../components/GetMyPosts";
+
 
 export default function Page() {
     // user

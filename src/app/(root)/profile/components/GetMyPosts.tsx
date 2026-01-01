@@ -1,7 +1,15 @@
+
+// api server
 import { getByIdUser } from "@/api/services/user"
+
+// components
 import PostLoader from "@/components/loaders/PostLoader"
 import Post from "@/components/Post"
+
+// type
 import { PostProp } from "@/types/post"
+
+// tanstack
 import { useQuery } from "@tanstack/react-query"
 
 export default function GetMyPosts({ id }: { id: string }) {

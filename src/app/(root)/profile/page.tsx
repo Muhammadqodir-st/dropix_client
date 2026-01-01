@@ -6,15 +6,16 @@ import { useSelector } from "react-redux"
 
 // next
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 
 // lucide
 import { Bookmark, PanelsTopLeft, UserPen } from "lucide-react"
 
 // components
 import MyPosts from "@/components/MyPosts"
-import { useState } from "react"
 import MySaveds from "@/components/MySaveds"
+
+// react
+import { useState } from "react"
 
 
 export default function Profile() {

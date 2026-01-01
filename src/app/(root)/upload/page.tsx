@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 
 // tanstack
 import { AnyFieldApi, useForm } from "@tanstack/react-form"
+import { useMutation } from "@tanstack/react-query"
 
 // redux
 import { useSelector } from "react-redux"
@@ -19,7 +20,6 @@ import EmojiPicker from "@/components/EmojiPicker"
 
 // react
 import { useState } from "react"
-import { useMutation } from "@tanstack/react-query"
 
 // api service
 import { createPost } from "@/api/services/post"
@@ -164,7 +164,7 @@ export default function Upload() {
                                                 return (
                                                     <div className="flex flex-col gap-2">
                                                         <textarea className={`w-full h-50 p-2 rounded-lg outline-0 ${!field.state.meta.isValid && 'border border-red-500'}`} value={field.state.value} onChange={(e) => { field.handleChange(e.target.value) }} disabled={uploadMutation.isPending} maxLength={200} autoFocus></textarea>
-                                                        <FieldInfo  field={field} />
+                                                        <FieldInfo field={field} />
                                                         <div className="w-full flex items-center justify-between text-zinc-500">
                                                             <SmilePlus className="cursor-pointer" onClick={() => setOpenEmoji(!openEmoji)} size={20} />
                                                             <p className="text-sm">{`${length}/200`}</p>
