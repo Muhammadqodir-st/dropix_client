@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 
 // next
 import Image from "next/image"
+import Link from "next/link"
 
 // lucide
 import { Bookmark, PanelsTopLeft, UserPen } from "lucide-react"
@@ -39,10 +40,10 @@ export default function Profile() {
                 <div className="flex-1">
                     <div className="flex items-center gap-4">
                         <h2 className="text-xl font-semibold">{user ? user.name : 'username'}</h2>
-                        <button className="flex items-center gap-2 px-4 py-1.5 border rounded-md text-sm cursor-pointer">
+                        <Link href={'/settings/edit'} className="flex items-center gap-2 px-4 py-1.5 border rounded-md text-sm cursor-pointer">
                             <UserPen size={18} />
                             Edit profile
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="flex gap-6 mt-3 text-sm">
@@ -60,7 +61,7 @@ export default function Profile() {
             <div className="flex items-center justify-center gap-25 mt-8">
                 <button onClick={() => setActivePage('posts')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'posts' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><PanelsTopLeft size={20} />Posts</button>
                 <button onClick={() => setActivePage('saved')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'saved' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><Bookmark size={20} />Saved</button>
-                <button onClick={() => setActivePage('tagged')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'tagged' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><PanelsTopLeft size={20} />Posts</button>
+                {/* <button onClick={() => setActivePage('tagged')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'tagged' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><PanelsTopLeft size={20} />Posts</button> */}
             </div>
 
 

@@ -9,23 +9,36 @@ import { Popover } from "@radix-ui/react-popover";
 import { PopoverContent, PopoverTrigger } from "../../components/ui/popover";
 
 // lucide react
-import { Bookmark, Heart, LogOut, MessageCircle, Plus, Search, Settings, UserPen, WalletCards } from "lucide-react";
+import { LogOut, Plus, Search, Settings, UserPen } from "lucide-react";
 
 // next
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// react
+import { useState } from "react";
+
 
 export default function Header() {
     // user
     const user = useSelector((state: RootState) => state.user.data)
 
+    // state
+    const [open, setOpen] = useState<boolean>(false)
+
     // pathname
     const pathname = usePathname()
 
     return (
-        <header className={`w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3 bg-[#030712] ${pathname === '/profile' && 'hidden' || pathname === '/upload' && 'hidden' || pathname === '/profile/mypost' && 'hidden' || pathname === '/profile/saved' && 'hidden'}`}>
+        <header className={`w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3 bg-[#030712] 
+        ${pathname === '/profile' && 'hidden' ||
+            pathname === '/upload' && 'hidden' ||
+            pathname === '/profile/mypost' && 'hidden' ||
+            pathname === '/profile/saved' && 'hidden' ||
+            pathname === '/settings/edit' && 'hidden'
+            }`}
+        >
             <label className="flex-1 flex items-center gap-2 border border-white p-1.75 rounded-lg" htmlFor="searchInput">
                 <Search size={23} />
                 <input className="outline-0" type="text" name="search" id="searchInput" />
@@ -38,7 +51,7 @@ export default function Header() {
                     </Link>
                 </li>
                 {user && <li>
-                    <Popover>
+                    <Popover open={open} onOpenChange={setOpen}>
                         <PopoverTrigger>
                             <div className="cursor-pointer">
                                 <Image className="w-9 h-9 rounded-full" src={user ? user.avatar : '/assets/defualt-user.jpg'} alt={user ? user.name : 'username'} width={100} height={100} />
@@ -51,30 +64,14 @@ export default function Header() {
                                     <p className="text-sm font-semibold">{user.name}</p>
                                 </li>
                                 <ul className="flex flex-col border-t border-b py-1">
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                    <Link onClick={() => setOpen(false)} href={'/settings/edit'} className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                         <UserPen size={20} />
                                         <p className="text-sm font-semibold">Edit profile</p>
-                                    </li>
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
-                                        <Heart size={20} />
-                                        <p className="text-sm font-semibold">Likes post</p>
-                                    </li>
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
-                                        <MessageCircle size={20} />
-                                        <p className="text-sm font-semibold">Comments</p>
-                                    </li>
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
-                                        <Bookmark size={20} />
-                                        <p className="text-sm font-semibold">Saved post</p>
-                                    </li>
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
-                                        <WalletCards size={20} />
-                                        <p className="text-sm font-semibold">My posts</p>
-                                    </li>
-                                    <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                    </Link>
+                                    <Link onClick={() => setOpen(false)} href={'/settings/edit'} className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                         <Settings size={20} />
                                         <p className="text-sm font-semibold">Settings</p>
-                                    </li>
+                                    </Link>
                                 </ul>
                                 <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                     <LogOut size={20} />
