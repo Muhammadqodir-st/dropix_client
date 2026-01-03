@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 // lucide react
-import { CircleUser, UserPen } from "lucide-react";
+import { CircleUser, Heart, UserPen } from "lucide-react";
 
 export default function Sidebar() {
 
@@ -25,6 +25,11 @@ export default function Sidebar() {
                 <Link href={'/settings/edit'} className={`flex items-center gap-2 py-2.5 px-4 rounded-lg ${pathname === '/settings/edit' ? 'bg-gray-900' : 'hover:bg-gray-900'}`}>
                     <CircleUser size={22} />
                     <p className="font-semibold">Edit profile</p>
+                </Link>
+
+                <Link href={'/settings/liked'} className={`flex items-center gap-2 py-2.5 px-4 rounded-lg ${pathname === '/settings/liked' ? 'bg-gray-900' : 'hover:bg-gray-900'}`}>
+                    <Heart size={22} />
+                    <p className="font-semibold">Liked posts</p>
                 </Link>
             </ul>
         </div>

@@ -1,12 +1,12 @@
 import { myProfile } from "@/api/services/user"
-import { PostProp } from "@/types/post"
+import { LikeProp } from "@/types/like"
 import { useQuery } from "@tanstack/react-query"
-import MyPost from "./MyPost"
+import MyLike from "./MyLike"
 
-export default function MyPosts() {
+export default function MyLikes() {
 
     const { data, isPending, error } = useQuery({
-        queryKey: ['myposts'],
+        queryKey: ['mylikes'],
         queryFn: async () => {
             return await myProfile()
         }
@@ -22,14 +22,15 @@ export default function MyPosts() {
         )
     }
 
+
     return (
-        <div className={`${data?.user.posts.length === 0 ? 'flex items-center justify-center' : 'grid grid-cols-3 gap-1'}`}>
-            {data?.user.posts.map((i: PostProp) => (
-                <MyPost key={i.id} item={i} />
+        <div className={`${data?.user.likes.length === 0 ? 'flex items-center justify-center' : 'grid grid-cols-3 gap-1'}`}>
+            {data?.user.likes.map((i: LikeProp) => (
+                <MyLike key={i.id} item={i.post} />
             ))}
-            {data?.user.posts.length === 0 &&
-                <p>No Posts yet</p>
+            {data?.user.likes.length === 0 &&
+                <p>No Likes yet</p>
             }
         </div>
     )
-};
+}

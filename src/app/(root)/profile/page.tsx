@@ -69,8 +69,8 @@ export default function Profile() {
 
             {/* Posts */}
             <div className="mt-6">
-                {activePage === 'posts' && user && <MyPosts id={user.id} />}
-                {activePage === 'saved' && user && <MySaveds id={user.id} />}
+                {activePage === 'posts' && <MyPosts />}
+                {activePage === 'saved' && <MySaveds />}
             </div>
         </div>
     )

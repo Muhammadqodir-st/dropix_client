@@ -1,6 +1,6 @@
 
 // api server
-import { getByIdUser } from "@/api/services/user"
+import { getByIdUser, myProfile } from "@/api/services/user"
 
 // components
 import PostLoader from "@/components/loaders/PostLoader"
@@ -13,12 +13,12 @@ import { SaveProp } from "@/types/save"
 import { useQuery } from "@tanstack/react-query"
 
 
-export default function GetMySaveds({ id }: { id: string }) {
+export default function GetMySaveds() {
 
     const { data, isPending, error } = useQuery({
-        queryKey: ['saved', id],
+        queryKey: ['saved'],
         queryFn: async () => {
-            return await getByIdUser({ id })
+            return await myProfile()
         }
     })
 

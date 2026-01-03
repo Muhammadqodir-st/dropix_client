@@ -1,5 +1,18 @@
 import { fetcher, getToken } from "../fetcher";
 
+// my profile
+export function myProfile() {
+    const token = getToken()
+
+    return fetcher('/user/profile', {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}
+
 // get by id
 export function getByIdUser({ id }: { id: string }) {
     return fetcher(`/user/${id}`, {

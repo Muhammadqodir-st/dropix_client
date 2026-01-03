@@ -1,14 +1,14 @@
-import { getByIdUser } from "@/api/services/user"
+import {  myProfile } from "@/api/services/user"
 import { useQuery } from "@tanstack/react-query"
 import MySaved from "./MySaved"
 import { SaveProp } from "@/types/save"
 
-export default function MySaveds({ id }: { id: string }) {
+export default function MySaveds() {
 
     const { data, isPending, error } = useQuery({
-        queryKey: ['saved', id],
+        queryKey: ['saved'],
         queryFn: async () => {
-            return await getByIdUser({ id })
+            return await myProfile()
         }
     })
 

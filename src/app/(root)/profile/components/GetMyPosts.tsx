@@ -1,6 +1,6 @@
 
 // api server
-import { getByIdUser } from "@/api/services/user"
+import { getByIdUser, myProfile } from "@/api/services/user"
 
 // components
 import PostLoader from "@/components/loaders/PostLoader"
@@ -12,12 +12,12 @@ import { PostProp } from "@/types/post"
 // tanstack
 import { useQuery } from "@tanstack/react-query"
 
-export default function GetMyPosts({ id }: { id: string }) {
+export default function GetMyPosts() {
 
     const { data, isPending, error } = useQuery({
-        queryKey: ['myposts', id],
+        queryKey: ['myposts'],
         queryFn: async () => {
-            return await getByIdUser({ id })
+            return await myProfile()
         }
     })
 
