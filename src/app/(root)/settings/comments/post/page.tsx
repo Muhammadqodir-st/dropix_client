@@ -2,7 +2,7 @@
 
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
-import GetMyLikes from "../../components/GetMyLikes";
+import GetMyCommentsPost from "../../components/GetMyCommentsPost";
 
 export default function Page() {
 
@@ -13,12 +13,12 @@ export default function Page() {
             {/* top */}
             <div onClick={() => router.back()} className="w-full bg-[#030712] sticky top-0 flex items-center gap-1 cursor-pointer z-2 py-3">
                 <ChevronLeft size={27} />
-                <p className="text-2xl font-bold">Liked posts</p>
+                <p className="text-2xl font-bold">Comments</p>
             </div>
 
             {/* body */}
             <div>
-                <GetMyLikes />
+                <GetMyCommentsPost />
             </div>
         </div>
     )

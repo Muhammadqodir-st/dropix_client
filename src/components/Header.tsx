@@ -31,7 +31,7 @@ export default function Header() {
     const pathname = usePathname()
 
     // hidden header
-    const hidden = ['/profile', '/upload', '/profile/mypost', '/profile/saved', '/settings/edit', '/settings/liked', '/settings/liked/post']
+    const hidden = ['/profile', '/upload', '/profile/mypost', '/profile/saved', '/settings/edit', '/settings/liked', '/settings/liked/post', '/settings/comments', '/settings/comments/post']
 
     return (
         <header className={`w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3 bg-[#030712] ${hidden.includes(pathname) ? 'hidden' : ''}`}>
