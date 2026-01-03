@@ -32,7 +32,7 @@ export function verifyUser(token: string) {
 
 
 // get user
-export function getUser(data: { token: string }) {
+export function getUser(data: { token: string | null }) {
     return fetcher('/auth/profile', {
         method: "GET",
         headers: {

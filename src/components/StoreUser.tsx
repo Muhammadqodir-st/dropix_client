@@ -24,7 +24,7 @@ export default function StoreUser() {
     const dispatch = useDispatch();
 
     // token
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState<string | null>(null);
 
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export default function StoreUser() {
 
     const data = useQuery({
         queryKey: ['user', token],
-        queryFn: () => getUser({ token: token }),
+        queryFn: () => getUser({ token}),
         enabled: !!token,
         retry: false
     });
