@@ -25,7 +25,7 @@ export default function MyComments() {
 
 
     return (
-        <div className={`${data?.user.comments.length === 0 ? '' : 'flex flex-col gap-3'}`}>
+        <div className={`${data?.user.comments.length === 0 ? 'flex items-center justify-center' : 'flex flex-col gap-3'}`}>
             {data?.user.comments.map((i: CommentProp) => (
                 <MyComment key={i.id} item={i} />
             ))}

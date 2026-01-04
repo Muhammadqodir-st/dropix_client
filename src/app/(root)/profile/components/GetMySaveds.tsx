@@ -24,8 +24,8 @@ export default function GetMySaveds() {
 
     if (isPending) {
         return (
-            <div className="w-full columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3">
-                {Array.from({ length: 10 }).map((p, i) => (
+            <div className="w-full columns-2 gap-3">
+                {Array.from({ length: 4 }).map((p, i) => (
                     <PostLoader key={i} />
                 ))}
             </div>
@@ -33,7 +33,7 @@ export default function GetMySaveds() {
     }
 
     return (
-        <ul className={`${data?.user.saves.length === 0 ? 'flex items-center justify-center' : 'w-full columns-2 sm:columns-3 md:columns-4 lg:columns-4 gap-3'}`}>
+        <ul className={`${data?.user.saves.length === 0 ? 'flex items-center justify-center' : 'w-full columns-2 gap-3'}`}>
             {data?.user.saves.map((i: SaveProp) => (
                 <Post key={i.id} item={i.post} />
             ))}
