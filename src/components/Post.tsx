@@ -26,12 +26,12 @@ export default function Post({ item }: { item: PostProp }) {
                 {/* TOP */}
                 <div className="flex items-start justify-between p-3">
 
-                    <div className="flex items-center gap-2 cursor-pointer">
+                    <Link href={`/user/${item.auther.id}`} className="flex items-center gap-2 cursor-pointer">
                         <Image className="w-8 h-8 rounded-full" src={item.auther.avatar} alt={item.auther.name} width={40} height={40} />
                         <p className="text-sm font-semibold hover:underline">
                             {item.auther.name}
                         </p>
-                    </div>
+                    </Link>
 
                     <div className="flex flex-col gap-4 backdrop-blur-md bg-white/10 p-2 rounded-4xl">
                         <div className="hover:scale-110 transition cursor-pointer">

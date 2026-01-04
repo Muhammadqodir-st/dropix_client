@@ -34,11 +34,24 @@ export default function Header() {
     // pathname
     const pathname = usePathname()
 
-    // hidden header
-    const hidden = ['/profile', '/upload', '/profile/mypost', '/profile/saved', '/settings/edit', '/settings/liked', '/settings/liked/post', '/settings/comments', '/settings/comments/post']
+    const hiddenRegex = [
+        /^\/profile$/,
+        /^\/upload$/,
+        /^\/profile\/mypost$/,
+        /^\/profile\/saved$/,
+        /^\/settings\/edit$/,
+        /^\/settings\/liked$/,
+        /^\/settings\/liked\/post$/,
+        /^\/settings\/comments$/,
+        /^\/settings\/comments\/post$/,
+        /^\/user\/[^/]+$/
+    ]
+
+    const isHidden = hiddenRegex.some(regex => regex.test(pathname))
+
 
     return (
-        <header className={`w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3 bg-[#030712] ${hidden.includes(pathname) ? 'hidden' : ''}`}>
+        <header className={`w-full sticky top-0 z-2 py-6 px-4 flex items-center gap-3 bg-[#030712] ${isHidden ? 'hidden' : ''}`}>
             <label className="flex-1 flex items-center gap-2 border border-white p-1.75 rounded-lg" htmlFor="searchInput">
                 <Search size={23} />
                 <input className="outline-0" type="text" name="search" id="searchInput" />
