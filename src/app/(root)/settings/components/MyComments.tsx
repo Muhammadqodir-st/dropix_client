@@ -17,7 +17,7 @@ export default function MyComments() {
         return (
             <div className="flex flex-col gap-3">
                 {[...Array(5)].map((_, i) => (
-                    <MyCommentsLoader />
+                    <MyCommentsLoader key={i} />
                 ))}
             </div>
         )

@@ -21,3 +21,11 @@ export function getToken() {
 
     return null
 }
+
+export function logOut() {
+    if (typeof window !== "undefined") {
+        localStorage.removeItem('token')
+        window.location.reload()
+        return
+    };
+}

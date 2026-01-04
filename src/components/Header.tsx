@@ -19,6 +19,9 @@ import { usePathname } from "next/navigation";
 // react
 import { useState } from "react";
 
+// api
+import { logOut } from "@/api/fetcher";
+
 
 export default function Header() {
     // user
@@ -26,6 +29,7 @@ export default function Header() {
 
     // state
     const [open, setOpen] = useState<boolean>(false)
+    const [modal, setModal] = useState<boolean>(false)
 
     // pathname
     const pathname = usePathname()
@@ -53,7 +57,7 @@ export default function Header() {
                                 <Image className="w-9 h-9 rounded-full" src={user ? user.avatar : '/assets/defualt-user.jpg'} alt={user ? user.name : 'username'} width={100} height={100} />
                             </div>
                         </PopoverTrigger>
-                        <PopoverContent className="mx-3 my-2 w-65 border border-gray-800">
+                        <PopoverContent className="mx-3 my-2 w-65 border border-gray-800 z-3">
                             <ul className="flex flex-col gap-2">
                                 <li className="flex items-center gap-2 px-1">
                                     <Image className="w-7 h-7 rounded-full" src={user ? user.avatar : '/assets/defualt-user.jpg'} alt={user ? user.name : 'username'} width={100} height={100} />
@@ -69,7 +73,7 @@ export default function Header() {
                                         <p className="text-sm font-semibold">Settings</p>
                                     </Link>
                                 </ul>
-                                <li className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
+                                <li onClick={() => { setModal(!modal); setOpen(!open) }} className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-800">
                                     <LogOut size={20} />
                                     <p className="text-sm font-semibold">LogOut</p>
                                 </li>
@@ -78,6 +82,46 @@ export default function Header() {
                     </Popover>
                 </li>}
             </ul>
+
+            {modal &&
+                <div
+                    onClick={() => setModal(false)}
+                    className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center"
+                >
+                    <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-full max-w-md rounded-2xl bg-gray-900 border border-gray-800 p-6 shadow-2xl animate-fadeIn"
+                    >
+                        <div className="flex flex-col items-center text-center">
+                            <div className="mb-4 h-14 w-14 flex items-center justify-center rounded-full bg-red-500/15">
+                                <LogOut className="text-red-500" size={28} />
+                            </div>
+
+                            <h2 className="text-xl font-semibold text-white">
+                                Log out of your account?
+                            </h2>
+                            <p className="mt-2 text-sm text-gray-400">
+                                You can always log back in at any time.
+                            </p>
+
+                            <div className="mt-6 flex w-full gap-3">
+                                <button
+                                    onClick={() => setModal(false)}
+                                    className="flex-1 rounded-xl border border-gray-700 bg-gray-800 py-2.5 text-gray-300 hover:bg-gray-700 transition cursor-pointer"
+                                >
+                                    Cancel
+                                </button>
+                                <button onClick={() => logOut()}
+                                    className="flex-1 rounded-xl bg-red-500 py-2.5 text-white hover:bg-red-600 transition cursor-pointer"
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
         </header>
     )
 }
