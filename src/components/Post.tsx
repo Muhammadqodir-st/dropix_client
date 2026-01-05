@@ -14,8 +14,13 @@ import LikeButton from "./LikeButton";
 import SaveButton from "./SaveButton";
 import CommentButton from "./CommentButton";
 import EllipsisButton from "./EllipsisButton";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
 
 export default function Post({ item }: { item: PostProp }) {
+
+    const user = useSelector((state: RootState) => state.user.data)
+
     return (
         <div className=" relative overflow-hidden rounded-4xl group mb-5">
             {/* background */}
@@ -26,7 +31,7 @@ export default function Post({ item }: { item: PostProp }) {
                 {/* TOP */}
                 <div className="flex items-start justify-between p-3">
 
-                    <Link href={`/user/${item.auther.id}`} className="flex items-center gap-2 cursor-pointer">
+                    <Link href={user?.id === item.autherId ? '/profile' : `/user/${item.autherId}`} className="flex items-center gap-2 cursor-pointer">
                         <Image className="w-8 h-8 rounded-full" src={item.auther.avatar} alt={item.auther.name} width={40} height={40} />
                         <p className="text-sm font-semibold hover:underline">
                             {item.auther.name}
@@ -43,9 +48,9 @@ export default function Post({ item }: { item: PostProp }) {
                         <div className="hover:scale-110 transition cursor-pointer">
                             <SaveButton item={item} saves={item.saves} />
                         </div>
-                        <button className="hover:scale-110 transition cursor-pointer">
+                        {/* <button className="hover:scale-110 transition cursor-pointer">
                             <Send size={22} />
-                        </button>
+                        </button> */}
                         <div className="hover:scale-110 transition cursor-pointer">
                             <EllipsisButton item={item} />
                         </div>

@@ -12,8 +12,8 @@ import Link from "next/link"
 import { Bookmark, PanelsTopLeft, UserPen } from "lucide-react"
 
 // components
-import MyPosts from "@/components/MyPosts"
-import MySaveds from "@/components/MySaveds"
+import MyPosts from "@/app/(root)/profile/components/MyPosts"
+import MySaveds from "@/app/(root)/profile/components/MySaveds"
 
 // react
 import { useState } from "react"

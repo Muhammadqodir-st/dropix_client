@@ -17,7 +17,7 @@ export default function MySaveds() {
         return (
             <div className="w-full grid grid-cols-3 gap-1">
                 {[...Array(6)].map((_, i) => (
-                    <div key={i} className="aspect-square bg-neutral-800 animate-pulse rounded" />
+                    <div key={i} className="aspect-square bg-gray-800 animate-pulse rounded" />
                 ))}
             </div>
         )

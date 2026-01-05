@@ -19,9 +19,9 @@ export default function EllipsisButton({ item }: { item: PostProp }) {
     const deletePost = useMutation({
         mutationFn: () => deleteByIdPost(item.id),
         onMutate: async (id) => {
-            await queryClient.cancelQueries({ queryKey: ['posts'] })
+            await queryClient.cancelQueries({ queryKey: ['myposts'] })
 
-            const prev = queryClient.getQueryData<PostProp[]>(['posts'])
+            const prev = queryClient.getQueryData<PostProp[]>(['myposts'])
 
             queryClient.setQueryData<PostProp[]>(['posts'], old =>
                 old?.filter(p => p.id !== item.id)
@@ -31,11 +31,11 @@ export default function EllipsisButton({ item }: { item: PostProp }) {
         },
         onError: (_err, _variables, context) => {
             if (context?.prev) {
-                queryClient.setQueryData(['posts'], context.prev)
+                queryClient.setQueryData(['myposts'], context.prev)
             }
         },
         onSettled: () => {
-            queryClient.invalidateQueries({ queryKey: ['posts'] })
+            queryClient.invalidateQueries({ queryKey: ['myposts'] })
         },
     })
 
@@ -51,7 +51,7 @@ export default function EllipsisButton({ item }: { item: PostProp }) {
                     </button>
                 }
                 <button>
-                    <Link href={item.autherId === user?.id ? '/profile' : '/'} className="flex items-center gap-2 font-semibold py-1 px-3 rounded-lg cursor-pointer">
+                    <Link href={item.autherId === user?.id ? '/profile' : `/user/${item.autherId}`} className="flex items-center gap-2 font-semibold py-1 px-3 rounded-lg cursor-pointer">
                         <User size={20} />
                         {user?.id === item.autherId ? 'View profile' : 'View user'}
                     </Link>

@@ -44,7 +44,8 @@ export default function Header() {
         /^\/settings\/liked\/post$/,
         /^\/settings\/comments$/,
         /^\/settings\/comments\/post$/,
-        /^\/user\/[^/]+$/
+        /^\/user\/[^/]+$/,
+        /^\/user\/[^/]+\/post$/,
     ]
 
     const isHidden = hiddenRegex.some(regex => regex.test(pathname))

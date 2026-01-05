@@ -11,6 +11,7 @@ import { Bookmark, PanelsTopLeft } from "lucide-react"
 // react
 import { useState } from "react"
 import { UserProp } from "@/types/user"
+import UserPosts from "./UserPosts"
 
 
 export default function UserProfile({ user }: { user: UserProp }) {
@@ -33,7 +34,7 @@ export default function UserProfile({ user }: { user: UserProp }) {
                     </div>
 
                     <div className="flex gap-6 mt-3 text-sm">
-                        <p><span className="font-semibold">12</span> posts</p>
+                        <p><span className="font-semibold">{user.posts.length}</span> posts</p>
                         <p><span className="font-semibold">120</span> followers</p>
                         <p><span className="font-semibold">80</span> following</p>
                     </div>
@@ -45,13 +46,13 @@ export default function UserProfile({ user }: { user: UserProp }) {
             </div>
 
             <div className="w-full mt-5 flex items-center gap-5">
-                <button className=" w-full p-2.5 bg-blue-700 rounded-xl">follow</button>
-                <button className=" w-full p-2.5 bg-gray-700 rounded-xl">message</button>
+                <button className=" w-full p-2.5 bg-blue-700 rounded-xl cursor-pointer hover:bg-blue-600">follow</button>
+                <button className=" w-full p-2.5 bg-gray-700 rounded-xl cursor-pointer hover:bg-gray-600">message</button>
             </div>
 
             <div className="flex items-center justify-center gap-25 mt-5">
                 <button onClick={() => setActivePage('posts')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'posts' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><PanelsTopLeft size={20} />Posts</button>
-                <button onClick={() => setActivePage('saved')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'saved' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><Bookmark size={20} />Saved</button>
+                {/* <button onClick={() => setActivePage('saved')} className={`flex items-center gap-2 font-semibold p-3 border-b-2 ${activePage === 'saved' ? 'border-white' : 'border-transparent'} hover:border-white cursor-pointer`}><Bookmark size={20} />Saved</button> */}
             </div>
 
 
@@ -59,7 +60,7 @@ export default function UserProfile({ user }: { user: UserProp }) {
 
             {/* Posts */}
             <div className="mt-6">
-                {/* {activePage === 'posts' && <MyPosts />} */}
+                {activePage === 'posts' && <UserPosts posts={user.posts} />}
                 {/* {activePage === 'saved' && <MySaveds />} */}
             </div>
         </div>
