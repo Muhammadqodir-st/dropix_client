@@ -19,6 +19,8 @@ export default function PostImage({ item }: { item: PostProp }) {
                 height={800}
                 loading="lazy"
                 onLoad={() => setImageLoader(false)}
+                placeholder="blur"
+                blurDataURL={item.image}
             />
         </div>
     );

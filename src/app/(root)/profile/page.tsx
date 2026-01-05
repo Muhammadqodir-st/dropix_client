@@ -47,7 +47,7 @@ export default function Profile() {
                     </div>
 
                     <div className="flex gap-6 mt-3 text-sm">
-                        <p><span className="font-semibold">12</span> posts</p>
+                        <p><span className="font-semibold">{user?.posts.length}</span> posts</p>
                         <p><span className="font-semibold">120</span> followers</p>
                         <p><span className="font-semibold">80</span> following</p>
                     </div>
