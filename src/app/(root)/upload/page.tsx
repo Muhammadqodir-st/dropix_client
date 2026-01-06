@@ -86,14 +86,14 @@ export default function Upload() {
 
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-3">
+        <div onClick={() => router.back()} className="fixed inset-0 bg-black/50 flex items-center justify-center z-3">
 
             {/* router back */}
             <button disabled={uploadMutation.isPending} onClick={() => router.back()} className="absolute top-4 right-4 cursor-pointer">
                 <X size={28} />
             </button>
 
-            <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit() }} className="w-250 h-180 bg-zinc-900 rounded-xl flex flex-col overflow-hidden">
+            <form onClick={(e) => e.stopPropagation()} onSubmit={(e) => { e.preventDefault(); form.handleSubmit() }} className="w-250 h-180 bg-zinc-900 rounded-xl flex flex-col overflow-hidden">
                 <div className={`w-full p-2.5 bg-black ${uploadBtn && 'flex items-center justify-between'}`}>
                     {uploadBtn && (
                         <button disabled={uploadMutation.isPending} className="cursor-pointer" type="button" onClick={() => { form.setFieldValue("file", null); setUploadBtn(false) }}>
