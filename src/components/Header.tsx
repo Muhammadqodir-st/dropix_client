@@ -59,7 +59,7 @@ export default function Header() {
             </label>
             <ul className="flex items-center justify-between gap-5">
                 <li>
-                    <Link className="py-1.75 px-4 border border-white rounded-lg flex items-center justify-center gap-2 cursor-pointer" href={'/upload'}>
+                    <Link className="py-2 px-4 border border-white rounded-lg flex items-center justify-center gap-2 cursor-pointer" href={'/upload'}>
                         <Plus size={23} />
                         <p className="text-sm font-semibold">Create post</p>
                     </Link>
