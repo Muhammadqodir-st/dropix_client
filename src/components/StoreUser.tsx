@@ -31,12 +31,18 @@ export default function StoreUser() {
         if (typeof window !== 'undefined') {
             setToken(localStorage.getItem("token"))
         }
+
+        if (typeof window !== 'undefined') {
+            if (!token) {
+                router.push('/auth/login')
+            }
+        }
     }, []);
 
 
     const data = useQuery({
         queryKey: ['user', token],
-        queryFn: () => getUser({ token}),
+        queryFn: () => getUser({ token }),
         enabled: !!token,
         retry: false
     });
@@ -50,7 +56,7 @@ export default function StoreUser() {
     }, [data.data, dispatch]);
 
 
-    if (data.isPending) {
+    if (data.isLoading) {
         return (
             <div className="fixed inset-0 flex flex-col items-center justify-between bg-black z-50 py-5">
                 <span />
