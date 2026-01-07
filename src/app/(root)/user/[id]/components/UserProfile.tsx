@@ -25,7 +25,7 @@ export default function UserProfile({ user }: { user: UserProp }) {
             <div className="flex gap-6 items-center">
                 {/* image */}
                 <div className="relative w-32 h-32">
-                    <Image src={user ? user.avatar : "/avatar.png"} alt={user ? user.name : 'username'} fill className="rounded-full object-cover" />
+                    <Image src={user ? user.avatar : "/assets/defualt-user.jpg"} alt={user ? user.name : 'username'} fill className="rounded-full object-cover" />
                 </div>
 
                 <div className="flex-1">
