@@ -31,12 +31,6 @@ export default function StoreUser() {
         if (typeof window !== 'undefined') {
             setToken(localStorage.getItem("token"))
         }
-
-        if (typeof window !== 'undefined') {
-            if (!token) {
-                router.push('/auth/login')
-            }
-        }
     }, []);
 
 
