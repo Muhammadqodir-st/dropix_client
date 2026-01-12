@@ -20,7 +20,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 // api
-import { logOut } from "@/api/fetcher";
+import { logOut } from "@/api/services/auth";
 
 
 export default function Header() {

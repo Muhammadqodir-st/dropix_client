@@ -40,3 +40,17 @@ export function getUser(data: { token: string | null }) {
         }
     });
 };
+
+export function logOut() {
+
+    if (typeof window !== "undefined") {
+        localStorage.removeItem('token')
+    };
+
+    return fetcher('/auth/logout', {
+        method: "POST",
+        headers: {
+            "Content-type": 'application/json'
+        }
+    })
+}

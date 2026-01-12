@@ -1,9 +1,10 @@
 export async function fetcher(url: string, options: RequestInit = {}) {
-    const res = await fetch(`https://dropix-server.onrender.com${url}`, {
+    const res = await fetch(`https://dropixuz.vercel.app${url}`, {
         ...options,
         headers: {
             ...options.headers
-        }
+        },
+        credentials: 'include'
     });
 
     if (!res.ok) {
@@ -20,12 +21,4 @@ export function getToken() {
     };
 
     return null
-}
-
-export function logOut() {
-    if (typeof window !== "undefined") {
-        localStorage.removeItem('token')
-        window.location.reload()
-        return
-    };
 }
