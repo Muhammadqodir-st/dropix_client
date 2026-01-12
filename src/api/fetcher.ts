@@ -1,5 +1,5 @@
 export async function fetcher(url: string, options: RequestInit = {}) {
-    const res = await fetch(`https://dropixuz.vercel.app${url}`, {
+    const res = await fetch(`https://dropix-server.onrender.com${url}`, {
         ...options,
         headers: {
             ...options.headers
